@@ -1,0 +1,315 @@
+import { Link } from 'react-router-dom'
+import { useInView } from '../hooks/useInView'
+
+function FadeIn({
+  children,
+  className = '',
+  delay = 0,
+}: {
+  children: React.ReactNode
+  className?: string
+  delay?: number
+}) {
+  const [ref, inView] = useInView<HTMLDivElement>()
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const galleryImages = [
+  { seed: 'garden1', w: 800, h: 600, alt: 'Blooming perennial garden border' },
+  { seed: 'garden2', w: 800, h: 1000, alt: 'Rose garden in full bloom' },
+  { seed: 'garden3', w: 800, h: 600, alt: 'Cottage garden pathway' },
+  { seed: 'floral1', w: 800, h: 800, alt: 'Floral arrangement' },
+  { seed: 'garden4', w: 800, h: 600, alt: 'Vegetable and herb garden' },
+  { seed: 'garden5', w: 800, h: 1000, alt: 'Ornamental grass planting' },
+]
+
+export default function Home() {
+  return (
+    <>
+      {/* ── Hero ── */}
+      <section className="relative -mt-16 lg:-mt-20 h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&auto=format&fit=crop"
+          alt="Lush garden in full bloom"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65" />
+
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+          <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
+            Jenkintown &amp; Abington, Pennsylvania
+          </p>
+          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+            Cultivating Beauty,
+            <br />
+            <em className="not-italic text-mint">Building Community</em>
+          </h1>
+          <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+            For over seven decades, we've united passionate gardeners to enrich
+            our neighborhoods through horticultural excellence, civic
+            beautification, and lifelong friendship.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/events"
+              className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors shadow-lg"
+            >
+              Upcoming Events
+            </Link>
+            <Link
+              to="/about"
+              className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold rounded-md transition-colors backdrop-blur-sm"
+            >
+              Learn About Us
+            </Link>
+          </div>
+        </div>
+
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </section>
+
+      {/* ── Next Event Highlight ── */}
+      <section className="bg-cream py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-3">
+                Coming Up
+              </p>
+              <h2 className="font-serif text-4xl font-bold text-forest">
+                Featured Event
+              </h2>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={100}>
+            <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-parchment max-w-4xl mx-auto">
+              <div className="flex flex-col md:flex-row">
+                <div className="bg-forest text-white px-10 py-10 md:py-0 flex flex-col items-center justify-center md:min-w-[180px] text-center">
+                  <span className="font-serif text-6xl font-bold leading-none text-mint">16</span>
+                  <span className="text-lg font-medium mt-1">August</span>
+                  <span className="text-white/60 text-sm">2026</span>
+                </div>
+                <div className="p-8 flex-1">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="text-xs font-semibold bg-mint/30 text-forest px-3 py-1 rounded-full">
+                      Garden Tour
+                    </span>
+                    <span className="text-xs font-semibold bg-parchment text-bark px-3 py-1 rounded-full">
+                      Members &amp; Guests Welcome
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-forest mb-3">
+                    Late Summer Garden Tour
+                  </h3>
+                  <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
+                    <span className="flex items-center gap-1.5">
+                      <ClockIcon /> 10:00 AM – 3:00 PM
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <LocationIcon /> Self-guided, multiple private gardens
+                    </span>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Explore six private gardens throughout Jenkintown and Abington as their late-summer
+                    plantings reach peak beauty. Maps and tickets available at the Jenkintown
+                    Library starting August 10th. A beloved annual tradition showcasing the artistry
+                    of our members' gardens.
+                  </p>
+                  <Link
+                    to="/events"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
+                  >
+                    View All Events
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Civic Projects Spotlight ── */}
+      <section className="bg-parchment py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-3">
+                In Our Community
+              </p>
+              <h2 className="font-serif text-4xl font-bold text-forest mb-4">
+                Civic Projects
+              </h2>
+              <p className="text-gray-600 max-w-xl mx-auto">
+                From streetscape plantings to pollinator gardens, we bring lasting
+                beauty to our shared public spaces.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                seed: '42',
+                title: 'Old York Road Streetscape',
+                desc: 'Seasonal plantings and perennial borders along the Old York Road corridor beautifying the gateway to our borough.',
+                status: 'Active',
+              },
+              {
+                seed: '17',
+                title: 'Community Pollinator Garden',
+                desc: 'A thriving native plant sanctuary at Abington Township Community Park supporting bees, butterflies, and beneficial insects.',
+                status: 'Active',
+              },
+              {
+                seed: '83',
+                title: 'School Garden Partnership',
+                desc: 'Collaborating with Jenkintown Elementary to establish raised-bed vegetable gardens and outdoor classrooms.',
+                status: 'Active',
+              },
+            ].map((project, i) => (
+              <FadeIn key={project.seed} delay={i * 100}>
+                <article className="bg-white rounded-xl overflow-hidden shadow-sm border border-parchment hover:shadow-md transition-shadow group">
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={`https://picsum.photos/seed/${project.seed}/800/600`}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="inline-block text-xs font-semibold bg-sage/15 text-sage px-2.5 py-1 rounded-full mb-3">
+                      {project.status}
+                    </span>
+                    <h3 className="font-serif text-lg font-bold text-forest mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {project.desc}
+                    </p>
+                    <Link
+                      to="/civic-projects"
+                      className="text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1 transition-colors"
+                    >
+                      Learn More
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={300}>
+            <div className="text-center mt-10">
+              <Link
+                to="/civic-projects"
+                className="inline-flex items-center gap-2 px-7 py-3 border-2 border-forest text-forest font-semibold rounded-md hover:bg-forest hover:text-white transition-colors text-sm"
+              >
+                View All Projects
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Gallery Teaser ── */}
+      <section className="bg-cream py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-3">
+                Photography
+              </p>
+              <h2 className="font-serif text-4xl font-bold text-forest mb-4">
+                From Our Gardens
+              </h2>
+              <p className="text-gray-600 max-w-xl mx-auto">
+                A glimpse into the beauty our members cultivate each season.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="columns-2 md:columns-3 gap-4 space-y-4">
+            {galleryImages.map((img, i) => (
+              <FadeIn key={img.seed} delay={i * 80}>
+                <div className="break-inside-avoid overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <img
+                    src={`https://picsum.photos/seed/${img.seed}/${img.w}/${img.h}`}
+                    alt={img.alt}
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Join CTA ── */}
+      <section className="bg-forest py-24">
+        <FadeIn>
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <p className="text-mint text-sm font-semibold tracking-widest uppercase mb-4">
+              Become a Member
+            </p>
+            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-white mb-6">
+              Grow With Us
+            </h2>
+            <p className="text-white/75 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+              Whether you're an expert horticulturalist or a curious beginner,
+              there's a place for you in our garden club. Join a warm community
+              of plant lovers who share your passion.
+            </p>
+            <Link
+              to="/join"
+              className="inline-block px-10 py-4 bg-gold hover:bg-gold/90 text-white font-bold rounded-md text-lg transition-colors shadow-lg"
+            >
+              Join Us Today
+            </Link>
+          </div>
+        </FadeIn>
+      </section>
+    </>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  )
+}
+
+function LocationIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  )
+}
