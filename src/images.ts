@@ -1,13 +1,17 @@
+import wallHouseHerbGarden from './assets/wall-house-herb-garden.jpg'
+import trainStationFall2025 from './assets/train-station-fall-2025.jpg'
+import christLutheranNurseryGarden from './assets/christ-lutheran-nursery-garden.jpg'
+
 const T = 'https://64.media.tumblr.com'
 
 export const imgs = {
   // Page 1 — most recent posts
-  img1:  `${T}/0033cbff7ac45c22241dc576c8c02ddb/472fd3550d558ebd-ce/s500x750/9f38a4dd55fbb0417838f1b8cc64e90ba6963a95.jpg`,  // Wall House herb garden
-  img2:  `${T}/6f171d4c5e7e4306014291a441ca70b6/2be04ecb6e402e53-f1/s540x810/75e5b2863f78e84dfa4f05a4a297eb0394d22249.jpg`,  // Train station (Fall 2025)
+  img1:  wallHouseHerbGarden,  // Wall House herb garden
+  img2:  trainStationFall2025,  // Train station (Fall 2025)
   img3:  `${T}/0e0ba29880055b54839afcc9b96709b2/f4534cd4792a4811-c6/s500x750/b42035250d0f183754920014130788226c7ed653.jpg`,  // Train station (Fall 2025)
   img4:  `${T}/5827b46e9aacb0d138f1beb8cc57e223/66ed3849716b7005-97/s500x750/97fbaa6254671006118eff12d96bd0d4f37b5ac7.jpg`,  // Train station (Fall 2024)
   img5:  `${T}/fdd34650c4d5115cf7b36c16cc5e4017/48cbd3c90ce49762-ac/s500x750/b492c0576ab80a37aac3c3c0b691bc29e636d83b.jpg`,  // Train station (Fall 2024)
-  img7:  `${T}/6856bdc5b258d1dc07cd37675dcfe674/6e4a209660e47805-9c/s500x750/6eaf5793f25f0ca529992f2a78176a2c73e11eab.jpg`,  // Christ Lutheran nursery garden
+  img7:  christLutheranNurseryGarden,  // Christ Lutheran nursery garden
   img8:  `${T}/9f5f64a8c1495da41af852de0a27fb41/cb95e571dd4eacd0-6d/s500x750/8ffdfaf7440c74d29cf7188f6b5f733b5119f62a.jpg`,  // Grace Presbyterian winter
   img9:  `${T}/3327b5a60e45dd3b7cbd1e3759c21ce8/5e2fd7281ace08b6-c3/s500x750/94fe9cd0983b51924ba2dede928f452af83f19f6.jpg`,  // Train station (summer 2022)
   img10: `${T}/3b247c26f75d88d13ad35df7f608db29/590e7a42c94670a3-a5/s500x750/67c1da3ed03c59aef885d5ebfaea045024c4c783.jpg`,  // Plant sale raffle basket
