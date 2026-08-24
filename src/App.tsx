@@ -9,6 +9,7 @@ import About from './pages/About'
 import Join from './pages/Join'
 import Contact from './pages/Contact'
 import Archive from './pages/Archive'
+import FlowerShowDetail from './pages/FlowerShowDetail'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -36,6 +37,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:slug" element={<FlowerShowDetail />} />
           <Route path="/civic-projects" element={<CivicProjects />} />
           <Route path="/about" element={<About />} />
           <Route path="/join" element={<Join />} />

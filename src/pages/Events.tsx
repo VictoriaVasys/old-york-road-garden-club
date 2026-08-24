@@ -1,5 +1,14 @@
+import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
+import { upcomingEvents2026_2027, type UpcomingEvent } from '../data/upcomingEvents'
+
+const typeBadgeStyles: Record<UpcomingEvent['type'], string> = {
+  Workshop: 'bg-mint/30 text-forest',
+  Speaker: 'bg-sage/15 text-sage',
+  Program: 'bg-gold/15 text-gold',
+  Social: 'bg-parchment text-bark',
+}
 
 const programYears: { year: string; events: { date: string; title: string; presenter?: string }[] }[] = [
   {
@@ -128,22 +137,53 @@ export default function Events() {
       <section className="bg-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="font-serif text-3xl font-bold text-forest mb-6">
-              Upcoming Events
+            <h2 className="font-serif text-3xl font-bold text-forest mb-2">
+              2026–2027 Program Year
             </h2>
-            <div className="bg-white border border-parchment rounded-xl p-10 text-center max-w-2xl">
-              <div className="text-4xl mb-4">🌱</div>
-              <h3 className="font-serif text-xl font-semibold text-forest mb-2">
-                New Schedule Coming Soon
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Our 2026–2027 program schedule will be posted here next week.
-                Monthly meetings are held on the second Thursday of each month
-                at 12:30 PM at Grace Presbyterian Church, 444 Old York Road, Jenkintown.
-                Meetings are free and open to the public.
-              </p>
-            </div>
+            <p className="text-gray-600 text-sm max-w-2xl mb-10">
+              Monthly meetings are held on the second Thursday of each month at 12:30 PM
+              at Grace Presbyterian Church, 444 Old York Road, Jenkintown. Meetings are
+              free and open to the public.
+            </p>
           </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {upcomingEvents2026_2027.map((e, i) => (
+              <FadeIn key={e.date} delay={i * 60}>
+                <div className="bg-white border border-parchment rounded-xl shadow-sm p-6 h-full flex flex-col">
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <span className="text-sm font-semibold text-forest">{e.date}</span>
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${typeBadgeStyles[e.type]}`}>
+                      {e.type}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-lg font-bold text-forest mb-1.5">
+                    {e.title}
+                  </h3>
+                  {e.presenter && (
+                    <p className="text-sm text-gray-500 mb-1">{e.presenter}</p>
+                  )}
+                  {e.description && (
+                    <p className="text-sm text-gray-600 mb-1">{e.description}</p>
+                  )}
+                  {e.location && (
+                    <p className="text-sm text-gray-500 mb-1">{e.location}</p>
+                  )}
+                  {e.flowerShowSlug && (
+                    <Link
+                      to={`/events/${e.flowerShowSlug}`}
+                      className="mt-auto pt-3 text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1"
+                    >
+                      Standard Flower Show Details
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
