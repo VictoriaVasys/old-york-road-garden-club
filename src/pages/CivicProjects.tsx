@@ -1,108 +1,151 @@
 import { useInView } from '../hooks/useInView'
+import { imgs } from '../images'
 
-type Status = 'Active' | 'Completed' | 'Planning'
-
-interface Project {
-  id: number
-  title: string
-  status: Status
-  location: string
-  description: string
-  impact: string[]
-  imageSeed: string
-  year: string
-  featured?: boolean
+interface Photo {
+  url: string
+  alt: string
 }
 
-const projects: Project[] = [
+interface Subsection {
+  label?: string
+  photos: Photo[]
+}
+
+interface CivicSection {
+  title: string
+  description: string
+  subsections: Subsection[]
+}
+
+const civicSections: CivicSection[] = [
   {
-    id: 1,
-    title: 'Old York Road Corridor Beautification',
-    status: 'Active',
-    location: 'Old York Road, Jenkintown Borough',
+    title: 'Jenkintown/Wyncote Train Station',
     description:
-      'Our flagship civic project, ongoing since 2008. We maintain twelve planted beds along the Old York Road commercial corridor, providing four-season interest through careful plant selection and dedicated member volunteer hours. Spring bulbs give way to summer perennials, fall asters, and ornamental cabbage, with evergreen structure providing winter interest. This project serves as the visible face of our club in the community.',
-    impact: [
-      '12 planted beds maintained year-round',
-      '400+ volunteer hours per year',
-      '3,000+ plants installed since 2008',
-      'Partnership with Jenkintown Borough Council',
+      'Club members water flower boxes and seasonal displays at the Jenkintown/Wyncote train station multiple times each week. Rain barrels are maintained on-site for sustainable irrigation. Plantings are refreshed each season — spring flowers replace winter decorations, fall arrangements follow summer blooms — keeping the station welcoming for the thousands of commuters who pass through daily.',
+    subsections: [
+      {
+        label: 'Fall 2025',
+        photos: [
+          { url: imgs.img2, alt: 'Train station fall planting 2025' },
+          { url: imgs.img3, alt: 'Train station fall display 2025' },
+        ],
+      },
+      {
+        label: 'Fall 2024',
+        photos: [
+          { url: imgs.img4, alt: 'Train station fall planting 2024' },
+          { url: imgs.img5, alt: 'Train station fall display 2024' },
+        ],
+      },
+      {
+        label: 'Summer 2022',
+        photos: [
+          { url: imgs.img9, alt: 'Train station summer 2022' },
+        ],
+      },
     ],
-    imageSeed: 'streetscape',
-    year: '2008–Present',
-    featured: true,
   },
   {
-    id: 2,
-    title: 'Community Pollinator Garden',
-    status: 'Active',
-    location: 'Abington Township Community Park',
+    title: 'Richard Wall House Herb Garden',
     description:
-      'Established in 2021, this half-acre native plant sanctuary was designed in consultation with the Pennsylvania Native Plant Society. The garden features over 85 species of native grasses, wildflowers, and shrubs selected specifically to support local pollinators including monarch butterflies, native bees, and hummingbirds. Interpretive signage educates park visitors about the importance of native plantings.',
-    impact: [
-      '85+ native plant species',
-      '0.5 acres of restored habitat',
-      '30% increase in observed pollinator species (year 2)',
-      'Educational signage serving 5,000+ annual park visitors',
+      'Members actively cultivate and maintain the herb garden at the historic Richard Wall House in Elkins Park. The garden is replanted and refreshed each season — herbs are added, beds are mulched, and the space is continually developed. It serves as both a working garden and a living educational resource, and is a key venue for the club\'s annual herb and plant sale.',
+    subsections: [
+      {
+        label: '2026 — Annual Plant Sale',
+        photos: [
+          { url: imgs.img10, alt: 'Plant sale raffle basket' },
+          { url: imgs.img11, alt: 'Wall House plant sale — moss purses' },
+        ],
+      },
+      {
+        label: '2021',
+        photos: [
+          { url: imgs.img1, alt: 'Wall House herb garden' },
+        ],
+      },
+      {
+        label: '2019 — Open House',
+        photos: [
+          { url: imgs.wallhouseOpenhouse, alt: 'Wall House 2019 open house' },
+        ],
+      },
+      {
+        label: '2018',
+        photos: [
+          { url: imgs.wallhouse2018, alt: 'Wall House holiday tour 2018' },
+        ],
+      },
     ],
-    imageSeed: 'pollinator',
-    year: '2021–Present',
   },
   {
-    id: 3,
-    title: 'Jenkintown Elementary School Garden',
-    status: 'Active',
-    location: 'Jenkintown Elementary School',
+    title: 'Community Floral Design',
     description:
-      "In partnership with Jenkintown School District, we designed and built four raised vegetable beds and an outdoor learning area adjacent to the school's science wing. Club members visit monthly throughout the school year to work alongside students, teaching basic horticulture, seed-starting, composting, and the lifecycle of plants. The harvest is shared with the school cafeteria and local food pantry.",
-    impact: [
-      '4 raised beds producing vegetables and herbs',
-      '200+ students engaged per year',
-      'Harvest donated to Jenkintown Food Pantry annually',
-      'Curriculum integration with 3rd–5th grade science standards',
+      'The club participates in community floral design programs and competitions, contributing arrangements and displays that bring beauty to shared spaces throughout the region. Members have earned recognition for their designs at Pennsylvania Horticultural Society shows and other local events.',
+    subsections: [
+      {
+        photos: [
+          { url: imgs.phsWindowsill, alt: 'PHS windowsill floral display' },
+        ],
+      },
     ],
-    imageSeed: 'schoolgarden',
-    year: '2019–Present',
   },
   {
-    id: 4,
-    title: 'Alverthorpe Manor Memorial Garden',
-    status: 'Completed',
-    location: 'Alverthorpe Manor Park, Jenkintown',
+    title: 'Blue Star Marker',
     description:
-      "A commemorative memorial garden installed at the entrance to Alverthorpe Manor Park honoring the park's centennial in 2022. The garden features a curated collection of heirloom roses, boxwood hedging, and antique-style cast-iron signage. Design was led by past president Eleanor Hartwell, who donated significant plant material from her own collection.",
-    impact: [
-      'Centennial completion on time and on budget',
-      'Featured in Pennsylvania Horticulturalist magazine (Fall 2022)',
-      '100+ heirloom rose varieties sourced',
-      'Maintained by club volunteer team',
-    ],
-    imageSeed: 'memorial',
-    year: '2021–2022',
+      'The Old York Road Garden Club maintains a Blue Star Memorial Marker, honoring the men and women of the United States armed forces who have served and sacrificed for our country. The marker is planted and tended by club members as an ongoing act of remembrance.',
+    subsections: [],
   },
   {
-    id: 5,
-    title: 'Township Road Median Planting Initiative',
-    status: 'Planning',
-    location: 'Susquehanna Road, Abington Township',
+    title: 'Memorial Planting',
     description:
-      'A proposed beautification project in partnership with Abington Township to introduce drought-tolerant perennial plantings in the medians along Susquehanna Road. Grant applications have been submitted to the Pennsylvania Department of Conservation and Natural Resources (DCNR) and the William Penn Foundation. A community design charrette is scheduled for Fall 2026.',
-    impact: [
-      '$45,000 in grant funding under application',
-      '1.2 miles of median to be planted',
-      'Focus on drought-tolerant native species',
-      'Community design process planned for Fall 2026',
+      'The club honors members and community figures through memorial plantings — living tributes that enrich local green spaces while preserving the memory of those who have shaped our community.',
+    subsections: [],
+  },
+  {
+    title: 'Nursery School at Christ Lutheran Church',
+    description:
+      'Club members work alongside preschool students at Christ Lutheran Church in Oreland to plant and tend a children\'s garden. The program introduces young learners to the joy of gardening, teaching them where food comes from and how to care for living plants.',
+    subsections: [
+      {
+        photos: [
+          { url: imgs.img7, alt: "Children's nursery garden at Christ Lutheran Church" },
+        ],
+      },
     ],
-    imageSeed: 'median',
-    year: '2026 (Planned)',
+  },
+  {
+    title: 'Penny Pines',
+    description:
+      'Through the national Penny Pines program, the club raises funds to purchase seedlings for reforestation of America\'s national forests — a small but lasting investment that helps restore natural habitats, one tree at a time.',
+    subsections: [],
+  },
+  {
+    title: 'Education',
+    description:
+      'The club supports horticultural education in the broader community through plant sales at local libraries, educational programs, and partnerships with institutions that bring gardening knowledge to the public.',
+    subsections: [
+      {
+        label: 'Abington Library Plant Sale',
+        photos: [
+          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale' },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Winter 2021–2022',
+    description:
+      'During the winter season, the club brings festive cheer to community spaces through holiday decorating and seasonal plantings, brightening public and partner locations throughout Jenkintown and Abington.',
+    subsections: [
+      {
+        photos: [
+          { url: imgs.holidayGnomes, alt: 'Holiday gnome decorations' },
+          { url: imgs.img8, alt: 'Grace Presbyterian winter display' },
+        ],
+      },
+    ],
   },
 ]
-
-const statusColors: Record<Status, string> = {
-  Active: 'bg-sage/15 text-sage',
-  Completed: 'bg-bark/10 text-bark',
-  Planning: 'bg-gold/15 text-gold',
-}
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [ref, inView] = useInView<HTMLDivElement>()
@@ -118,16 +161,13 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function CivicProjects() {
-  const featured = projects.find((p) => p.featured)!
-  const others = projects.filter((p) => !p.featured)
-
   return (
     <>
       {/* Hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1600&auto=format&fit=crop"
-          alt="Community garden volunteers"
+          src={imgs.img11}
+          alt="Wall House plant sale"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/55 to-transparent" />
@@ -142,136 +182,76 @@ export default function CivicProjects() {
       </section>
 
       {/* Intro */}
-      <section className="bg-cream py-16">
+      <section className="bg-cream py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="max-w-3xl">
-              <h2 className="font-serif text-3xl font-bold text-forest mb-4">
-                Rooted in Our Community
-              </h2>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                The Old York Road Garden Club has been improving the landscapes of
-                Jenkintown and Abington since 1952. Beyond our members' private gardens,
-                we invest hundreds of volunteer hours each year in civic beautification
-                projects that serve and inspire the entire community.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Featured project */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-6">
-              Flagship Project
+            <p className="text-gray-600 leading-relaxed text-lg max-w-3xl">
+              The Old York Road Garden Club has been beautifying Jenkintown and Abington
+              since 1935. Beyond our members' private gardens, we invest hundreds of volunteer
+              hours each year in civic projects that serve and inspire the whole community.
             </p>
           </FadeIn>
-          <FadeIn delay={80}>
-            <article className="bg-white rounded-2xl overflow-hidden shadow-md border border-parchment">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="h-72 lg:h-auto overflow-hidden">
-                  <img
-                    src={`https://picsum.photos/seed/${featured.imageSeed}/900/700`}
-                    alt={featured.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${statusColors[featured.status]}`}>
-                      {featured.status}
-                    </span>
-                    <span className="text-xs text-gray-400">{featured.year}</span>
-                  </div>
-                  <h2 className="font-serif text-2xl lg:text-3xl font-bold text-forest mb-2">
-                    {featured.title}
-                  </h2>
-                  <p className="text-sage text-sm font-medium mb-4 flex items-center gap-1.5">
-                    <LocationIcon /> {featured.location}
-                  </p>
-                  <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                    {featured.description}
-                  </p>
-                  <div>
-                    <h4 className="font-serif text-base font-semibold text-forest mb-3">
-                      Our Impact
-                    </h4>
-                    <ul className="space-y-1.5">
-                      {featured.impact.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                          <CheckIcon className="flex-shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </FadeIn>
         </div>
       </section>
 
-      {/* Other projects grid */}
-      <section className="bg-cream py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="font-serif text-2xl font-bold text-forest mb-10">
-              More Projects
-            </h2>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {others.map((project, i) => (
-              <FadeIn key={project.id} delay={i * 100}>
-                <article className="bg-white rounded-xl overflow-hidden shadow-sm border border-parchment hover:shadow-md transition-shadow h-full flex flex-col">
-                  <div className="h-52 overflow-hidden">
-                    <img
-                      src={`https://picsum.photos/seed/${project.imageSeed}/800/500`}
-                      alt={project.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${statusColors[project.status]}`}>
-                        {project.status}
-                      </span>
-                      <span className="text-xs text-gray-400">{project.year}</span>
-                    </div>
-                    <h3 className="font-serif text-lg font-bold text-forest mb-1.5">
-                      {project.title}
-                    </h3>
-                    <p className="text-sage text-xs font-medium mb-3 flex items-center gap-1">
-                      <LocationIcon /> {project.location}
-                    </p>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
-                      {project.description}
-                    </p>
-                    <div className="border-t border-parchment pt-4">
-                      <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
-                        Impact Highlights
-                      </h4>
-                      <ul className="space-y-1">
-                        {project.impact.slice(0, 2).map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-xs text-gray-500">
-                            <CheckIcon className="flex-shrink-0 mt-0.5 w-3 h-3" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </article>
+      {/* Project sections */}
+      {civicSections.map((section, si) => (
+        <section
+          key={section.title}
+          className={`py-14 ${si % 2 === 0 ? 'bg-parchment' : 'bg-cream'}`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mb-3">
+                {section.title}
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-8 max-w-3xl">
+                {section.description}
+              </p>
+            </FadeIn>
+
+            {section.subsections.length === 0 && (
+              <FadeIn delay={80}>
+                <p className="text-gray-400 text-sm italic">Photos coming soon.</p>
               </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+            )}
 
-      {/* Volunteer CTA */}
+            <div className="space-y-8">
+              {section.subsections.map((sub, subi) => (
+                <FadeIn key={subi} delay={subi * 80}>
+                  <div>
+                    {sub.label && (
+                      <h3 className="font-serif text-base font-semibold text-sage mb-3 pb-1.5 border-b border-forest/15">
+                        {sub.label}
+                      </h3>
+                    )}
+                    <div
+                      className={`grid gap-4 ${
+                        sub.photos.length === 1
+                          ? 'grid-cols-1 max-w-sm'
+                          : 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3'
+                      }`}
+                    >
+                      {sub.photos.map((photo) => (
+                        <div key={photo.url} className="overflow-hidden rounded-xl shadow-sm">
+                          <img
+                            src={photo.url}
+                            alt={photo.alt}
+                            className="w-full h-56 object-cover hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA */}
       <section className="bg-forest py-16">
         <FadeIn>
           <div className="max-w-2xl mx-auto px-4 text-center">
@@ -292,22 +272,5 @@ export default function CivicProjects() {
         </FadeIn>
       </section>
     </>
-  )
-}
-
-function CheckIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={`${className} text-sage`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-    </svg>
-  )
-}
-
-function LocationIcon() {
-  return (
-    <svg className="w-3.5 h-3.5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
   )
 }

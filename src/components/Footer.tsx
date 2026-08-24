@@ -23,7 +23,7 @@ export default function Footer() {
               Old York Road Garden Club
             </h3>
             <p className="text-mint/80 text-sm leading-relaxed mb-4">
-              Cultivating Community Since 1952
+              Cultivating Community Since 1935
             </p>
             <p className="text-white/60 text-sm leading-relaxed">
               Dedicated to horticultural excellence, civic beautification, and
@@ -46,6 +46,15 @@ export default function Footer() {
               >
                 <InstagramIcon className="w-5 h-5" />
               </a>
+              <a
+                href="https://oldyorkroadgardenclub.com/rss"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="RSS Feed"
+                className="text-white/60 hover:text-mint transition-colors"
+              >
+                <RssIcon className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -62,6 +71,7 @@ export default function Footer() {
                 { to: '/about', label: 'About Us' },
                 { to: '/join', label: 'Become a Member' },
                 { to: '/contact', label: 'Contact' },
+                { to: '/archive', label: 'Program Archive' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
@@ -86,15 +96,15 @@ export default function Footer() {
               <p>Jenkintown, PA 19046</p>
               <p className="mt-3">
                 <a
-                  href="mailto:info@oldyorkroadgardenclub.org"
+                  href="mailto:oldyorkroadgardenclub@gmail.com"
                   className="hover:text-mint transition-colors"
                 >
-                  info@oldyorkroadgardenclub.org
+                  oldyorkroadgardenclub@gmail.com
                 </a>
               </p>
-              <p>Meetings: 3rd Tuesday, 7:00 PM</p>
+              <p>Meetings: 2nd Thursday, 12:30 PM</p>
               <p className="text-white/50 text-xs">
-                Jenkintown Public Library, 460 Old York Rd
+                Grace Presbyterian Church, 444 Old York Rd, Jenkintown
               </p>
             </address>
 
@@ -139,6 +149,14 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+  )
+}
+
+function RssIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+    </svg>
   )
 }
 

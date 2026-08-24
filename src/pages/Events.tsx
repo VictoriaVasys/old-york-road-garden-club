@@ -1,140 +1,93 @@
 import { useInView } from '../hooks/useInView'
+import { imgs } from '../images'
 
-interface Event {
-  id: number
-  date: string
-  day: string
-  month: string
-  year: string
-  title: string
-  time: string
-  location: string
-  description: string
-  tags: string[]
-  upcoming: boolean
-}
-
-const events: Event[] = [
+const programYears: { year: string; events: { date: string; title: string; presenter?: string }[] }[] = [
   {
-    id: 1,
-    date: '2026-08-16',
-    day: '16',
-    month: 'Aug',
-    year: '2026',
-    title: 'Late Summer Garden Tour',
-    time: '10:00 AM – 3:00 PM',
-    location: 'Six private gardens, Jenkintown & Abington',
-    description:
-      'A beloved annual tradition — explore six exquisite private gardens at the height of late-summer splendor. Self-guided maps and tickets available at the Jenkintown Library beginning August 10th. Admission $20 / members free.',
-    tags: ['Garden Tour', 'All Welcome'],
-    upcoming: true,
+    year: '2025–2026',
+    events: [
+      { date: 'Oct 9, 2025',  title: '"All About Dahlias"', presenter: 'Michelle Miller, Master Gardener' },
+      { date: 'Nov 13, 2025', title: '"Recycling for the Birds"', presenter: 'Jack Jones, JJ\'s Woodcrafts' },
+      { date: 'Dec 11, 2025', title: 'Annual Holiday Luncheon/Tea' },
+      { date: 'Feb 12, 2026', title: '"Raised Bed Gardening"', presenter: 'John Marcarelli, Master Gardener' },
+      { date: 'Mar 12, 2026', title: '"Sustainable Types of Gardening"', presenter: 'Mikhail Arslanian, Mikhail\'s Garden Service' },
+      { date: 'Apr 9, 2026',  title: '"My Garden Using Native Plants"', presenter: 'Marie Carota, Horticulturist' },
+      { date: 'May 14, 2026', title: 'Spring Fling' },
+      { date: 'Jun 11, 2026', title: '"Japanese Garden of Buenos Aires"', presenter: 'Jane Irvin Klotz, Master Gardener' },
+      { date: 'Jun 27, 2026', title: 'Statewide Garden Tour — Wall House Gardens (GCFP)' },
+    ],
   },
   {
-    id: 2,
-    date: '2026-08-18',
-    day: '18',
-    month: 'Aug',
-    year: '2026',
-    title: 'August Monthly Meeting',
-    time: '7:00 PM – 9:00 PM',
-    location: 'Jenkintown Public Library, 460 Old York Rd',
-    description:
-      'Our August meeting features a guest presentation by noted horticulturalist Dr. Nora Whitfield on "Designing with Native Grasses." Members share summer garden updates and the Civic Projects Committee presents pollinator garden progress.',
-    tags: ['Monthly Meeting', 'Members'],
-    upcoming: true,
+    year: '2024–2025',
+    events: [
+      { date: 'Sep 12, 2024', title: '"Ikebana, the Japanese Art of Flower Arranging"', presenter: 'Dorothy C. Liu' },
+      { date: 'Oct 10, 2024', title: 'Fall Walking Tour Through Arboretum', presenter: 'Kathy Salisbury, Ambler Arboretum at Temple University' },
+      { date: 'Nov 14, 2024', title: '"Going Green"', presenter: 'Sharon Gross, Master Gardener' },
+      { date: 'Dec 12, 2024', title: '"Decorating for the Holidays"', presenter: 'Nancy Straka, Carol Koch, Bonnie Zieger, Irene Clemens' },
+      { date: 'Feb 13, 2025', title: '"Planning and Maintaining Fish Ponds"', presenter: 'Christian Senseman, Fitz\'s Fish Ponds' },
+      { date: 'Mar 13, 2025', title: '"Edible Landscapes — Hiding Your Fruits and Veggies"', presenter: 'Leigh Kieser, Master Gardener' },
+      { date: 'Apr 10, 2025', title: '"Houseplants — Indoor Landscaping with Colorful House Plants"', presenter: 'Mary McKnight Seltzer, Master Gardener' },
+      { date: 'May 8, 2025',  title: 'Spring Fling', presenter: 'Cedarbrook Country Club' },
+      { date: 'Jun 12, 2025', title: '"A Brief History of the Wall House Herb Garden" & "Benefits of Herbs"', presenter: 'Ronny Kosempel, Jane Irwin Klotz' },
+    ],
   },
   {
-    id: 3,
-    date: '2026-09-08',
-    day: '8',
-    month: 'Sep',
-    year: '2026',
-    title: 'Fall Plant Sale',
-    time: '9:00 AM – 1:00 PM',
-    location: 'Abington Township Municipal Building parking lot',
-    description:
-      'Our largest plant sale of the year! Members donate divisions of their best perennials, shrubs, and fall-blooming bulbs. All proceeds support our civic beautification projects. Come early for the best selection — fall asters, ornamental kale, heuchera, and more.',
-    tags: ['Plant Sale', 'Fundraiser', 'All Welcome'],
-    upcoming: true,
+    year: '2023–2024',
+    events: [
+      { date: 'Sep 14, 2023', title: '"Photography Basics and Flowers of Holland"', presenter: 'Kay Morrissey, NGC Flower Show Judge' },
+      { date: 'Oct 12, 2023', title: '"The Color of Autumn"', presenter: 'Ehren Gross, Senior Naturalist, Briar Bush Nature Center' },
+      { date: 'Nov 9, 2023',  title: '"Creative Design vs Traditional Design"', presenter: 'Audrey Williams, NGC Flower Show Judge' },
+      { date: 'Dec 13, 2023', title: 'Annual Holiday Luncheon — "Decorating for the Holidays"', presenter: 'Marda Craig, Linda Freedman, Ronny Kosempel, Marie Schneider' },
+      { date: 'Feb 8, 2024',  title: '"Parsley, a Powerhouse of an Herb"', presenter: 'Jane Klotz, Master Gardener' },
+      { date: 'Mar 14, 2024', title: '"Flowering Trees"', presenter: 'Ehren Gross, Briar Bush Nature Center' },
+      { date: 'Mar 23, 2024', title: 'Abington Library Plant Sale', presenter: 'Abington Library, 1:00–3:00 PM' },
+      { date: 'Apr 11, 2024', title: '"Attracting and Cultivating Bees"', presenter: 'Sandra Sweeney, Master Gardener' },
+      { date: 'Apr 28, 2024', title: 'Annual Plant Sale', presenter: 'Historic Richard Wall House, 1:00–3:00 PM' },
+      { date: 'May 9, 2024',  title: 'Spring Fling' },
+      { date: 'Jun 13, 2024', title: '"Native Plants for Cut Flowers"', presenter: 'Kathy Salisbury, Ambler Arboretum at Temple University' },
+    ],
   },
   {
-    id: 4,
-    date: '2026-09-15',
-    day: '15',
-    month: 'Sep',
-    year: '2026',
-    title: 'September Monthly Meeting',
-    time: '7:00 PM – 9:00 PM',
-    location: 'Jenkintown Public Library, 460 Old York Rd',
-    description:
-      'Fall planning meeting with the annual garden design competition judging. Members submit photos of summer garden projects for peer recognition awards in categories including Best Container Planting, Best New Bed, and Outstanding Pollinator Garden.',
-    tags: ['Monthly Meeting', 'Members'],
-    upcoming: true,
+    year: '2021–2022',
+    events: [
+      { date: 'Sep 9, 2021',  title: '"The Many Techniques Used in Parallel Design"', presenter: 'Brenda Sullivan, Horticulturist and Horticultural Therapist' },
+      { date: 'Oct 14, 2021', title: 'Fall Arrangement Demonstration', presenter: 'Marie Schneider' },
+      { date: 'Nov 11, 2021', title: '"Designing and Cultivating a Gold Medal Garden"', presenter: 'Nichole Juday Rhoads, PHS' },
+      { date: 'Dec 9, 2021',  title: 'Holiday Luncheon — "Decorating for the Holidays"', presenter: 'Carol Koch, Nancy Straka, Marda Craig, Bonnie Zieger' },
+      { date: 'Feb 10, 2022', title: '"Discovering Flowering Shrubs with Multiple Ornamental Interests"', presenter: 'Thom Mrazik, Master Gardener' },
+      { date: 'Mar 10, 2022', title: '"Welcoming Bluebirds to Our Backyards"', presenter: 'Pamela Dimeler, Wildlife Photographer' },
+      { date: 'Apr 14, 2022', title: '"Native Blooms and Their Pollinators"', presenter: 'Larry Moyer, Naturalist and Photographer' },
+      { date: 'May 12, 2022', title: 'Spring Fling' },
+      { date: 'Jun 9, 2022',  title: 'Lunch, House Tour, and Plant Sale', presenter: 'Historic Richard Wall House' },
+    ],
   },
   {
-    id: 5,
-    date: '2026-10-10',
-    day: '10',
-    month: 'Oct',
-    year: '2026',
-    title: 'Autumn Foliage Walk & Picnic',
-    time: '11:00 AM – 2:00 PM',
-    location: 'Alverthorpe Manor Park, Jenkintown',
-    description:
-      'A casual outdoor gathering to celebrate peak fall color. Bring a dish to share for our potluck picnic. The club will lead a guided walk through the arboretum section identifying specimen trees and discussing autumn planting strategies.',
-    tags: ['Social', 'Outdoor', 'All Welcome'],
-    upcoming: true,
+    year: '2019–2020',
+    events: [
+      { date: 'Sep 12, 2019', title: '"Planting Bulbs in the Fall for Spring Bloom"', presenter: 'Betty Nutt, Master Gardener' },
+      { date: 'Oct 10, 2019', title: '"How Not to Fail Orchid Growing"', presenter: 'Roslyn Greenberg, Past President Central Jersey Orchid Society' },
+      { date: 'Nov 14, 2019', title: '"Irises Arranged and Un-Arranged"', presenter: 'Svetlana McCoy-Rusanova, President Garden State Iris Society' },
+      { date: 'Dec 12, 2019', title: 'Holiday Luncheon — "Decorating for the Holidays"', presenter: 'Ronny Kosempel, Carol Koch, Marda Craig, Thembeka Mason, Mary Findlay' },
+      { date: 'Feb 13, 2020', title: '"Regrowing Produce"', presenter: 'Marda Craig' },
+      { date: 'Mar 12, 2020', title: '"Three Floral Designs: Parallel, Natural, Cluster"', presenter: 'Brenda Sullivan, Horticulturist and Horticultural Therapist' },
+      { date: 'Apr 9, 2020',  title: '"New Perennials for 2020"', presenter: 'Sharee Solow, Certified Horticulturist' },
+      { date: 'May 14, 2020', title: 'Spring Fling', presenter: 'Old York Road Country Club' },
+      { date: 'Jun 11, 2020', title: '"Native Blooms and Their Pollinators"', presenter: 'Larry Moyr, Naturalist and Photographer' },
+    ],
   },
   {
-    id: 6,
-    date: '2026-11-07',
-    day: '7',
-    month: 'Nov',
-    year: '2026',
-    title: 'Holiday Wreath Workshop',
-    time: '10:00 AM – 12:30 PM',
-    location: 'First Presbyterian Church of Jenkintown, Fellowship Hall',
-    description:
-      'Create a stunning holiday wreath using fresh evergreens, dried botanicals, and natural embellishments. All materials provided. Instructor: Margaret Chen, floral designer and longtime club member. Registration required; space is limited to 30 participants.',
-    tags: ['Workshop', 'Holiday', 'Members & Guests'],
-    upcoming: true,
+    year: '2018–2019',
+    events: [
+      { date: 'Sep 13, 2018', title: '"Simply Roses"', presenter: 'Mary McKnight Seltzer, Philadelphia Rose Society' },
+      { date: 'Oct 11, 2018', title: '"Best Trees for the Home Landscape"', presenter: 'Barley Van Clief, Tree Tenders Project Manager PHS' },
+      { date: 'Nov 15, 2018', title: '"Winning Combinations, Greening Throughout the Year"', presenter: 'Lorie M Hayes, Philadelphia Parks and Recreation' },
+      { date: 'Dec 13, 2018', title: 'Holiday Luncheon — "Decorating Our Home With Greens and Berries"', presenter: 'Marie Schneider, Marda Craig' },
+      { date: 'Feb 14, 2019', title: '"Gardening for Window Boxes, Containers and Roof Gardens"', presenter: 'Andrea Hallmark, Landscape Design' },
+      { date: 'Mar 14, 2019', title: '"Attract Bluebirds to Your Yard"', presenter: 'Betsy Nutt, Master Gardener' },
+      { date: 'Apr 11, 2019', title: '"Peonies" — Selection, Care and Maintenance', presenter: 'Thomas Mrazik, Master Gardener' },
+      { date: 'May 9, 2019',  title: 'Spring Fling Luncheon' },
+      { date: 'Jun 13, 2019', title: '"Using Flowers to Decorate Book Marks and Note Paper"', presenter: 'Marda Craig' },
+    ],
   },
-  {
-    id: 7,
-    date: '2026-11-17',
-    day: '17',
-    month: 'Nov',
-    year: '2026',
-    title: 'November Monthly Meeting',
-    time: '7:00 PM – 9:00 PM',
-    location: 'Jenkintown Public Library, 460 Old York Rd',
-    description:
-      'Year-end member recognition and election of officers for 2027. Outgoing President Patricia Lawson will deliver the annual state of the club address. Light refreshments served. Holiday wreath raffle benefiting the School Garden Partnership.',
-    tags: ['Monthly Meeting', 'Annual Election', 'Members'],
-    upcoming: true,
-  },
-  {
-    id: 8,
-    date: '2026-12-05',
-    day: '5',
-    month: 'Dec',
-    year: '2026',
-    title: 'Annual Holiday Dinner & Celebration',
-    time: '6:30 PM – 10:00 PM',
-    location: 'The Hiway Theater Ballroom, Jenkintown',
-    description:
-      'Our most festive event of the year — a sit-down dinner celebrating another year of growth and community. Awards ceremony, silent auction of member artwork and garden products, and musical entertainment. Tickets $65/person, $50/members.',
-    tags: ['Annual Gala', 'Ticketed'],
-    upcoming: true,
-  },
-]
-
-const pastEvents = [
-  { title: 'Spring Garden Tour', date: 'May 18, 2026' },
-  { title: 'Seed Swap & Potluck', date: 'March 24, 2026' },
-  { title: 'Winter Pruning Workshop', date: 'February 10, 2026' },
-  { title: '2025 Annual Holiday Gala', date: 'December 6, 2025' },
-  { title: 'Bulb Planting Day — Old York Road Corridor', date: 'October 19, 2025' },
 ]
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
@@ -156,7 +109,7 @@ export default function Events() {
       {/* Page hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&auto=format&fit=crop"
+          src={imgs.img11}
           alt="Garden club outdoor gathering"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -175,107 +128,59 @@ export default function Events() {
       <section className="bg-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
+            <h2 className="font-serif text-3xl font-bold text-forest mb-6">
+              Upcoming Events
+            </h2>
+            <div className="bg-white border border-parchment rounded-xl p-10 text-center max-w-2xl">
+              <div className="text-4xl mb-4">🌱</div>
+              <h3 className="font-serif text-xl font-semibold text-forest mb-2">
+                New Schedule Coming Soon
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Our 2026–2027 program schedule will be posted here next week.
+                Monthly meetings are held on the second Thursday of each month
+                at 12:30 PM at Grace Presbyterian Church, 444 Old York Road, Jenkintown.
+                Meetings are free and open to the public.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Past programs */}
+      <section className="bg-parchment py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
             <h2 className="font-serif text-3xl font-bold text-forest mb-10">
-              Upcoming Events — 2026
+              Past Programs
             </h2>
           </FadeIn>
-
-          <div className="space-y-5">
-            {events.map((event, i) => (
-              <FadeIn key={event.id} delay={i * 60}>
-                <article className="bg-white rounded-xl border border-parchment shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                  <div className="flex flex-col sm:flex-row">
-                    {/* Date badge */}
-                    <div className="sm:w-32 bg-forest text-white flex flex-row sm:flex-col items-center justify-center gap-3 sm:gap-0 py-4 sm:py-8 px-6 sm:px-0 flex-shrink-0">
-                      <span className="font-serif text-4xl sm:text-5xl font-bold leading-none text-mint">
-                        {event.day}
-                      </span>
-                      <div className="sm:text-center">
-                        <span className="block text-base sm:text-lg font-medium mt-0 sm:mt-1">
-                          {event.month}
-                        </span>
-                        <span className="block text-white/50 text-xs">{event.year}</span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6 flex-1">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {event.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs font-semibold bg-parchment text-bark px-2.5 py-0.5 rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <h3 className="font-serif text-xl font-bold text-forest mb-2">
-                        {event.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-3">
-                        <span className="flex items-center gap-1.5">
-                          <ClockIcon />
-                          {event.time}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <LocationIcon />
-                          {event.location}
-                        </span>
-                      </div>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {event.description}
-                      </p>
-                      <button
-                        type="button"
-                        className="text-sm font-semibold text-gold hover:text-gold/80 border border-gold hover:bg-gold/5 px-4 py-1.5 rounded-md transition-colors"
-                      >
-                        Add to Calendar
-                      </button>
-                    </div>
-                  </div>
-                </article>
+          <div className="space-y-10">
+            {programYears.map((group, gi) => (
+              <FadeIn key={group.year} delay={gi * 60}>
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-forest mb-3 pb-2 border-b border-parchment">
+                    {group.year}
+                  </h3>
+                  <ul className="divide-y divide-parchment/60 bg-white rounded-xl border border-parchment overflow-hidden">
+                    {group.events.map((e) => (
+                      <li key={e.date + e.title} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-6 py-3.5 text-sm">
+                        <span className="text-gray-400 flex-shrink-0 w-28">{e.date}</span>
+                        <div>
+                          <span className="text-gray-800 font-medium">{e.title}</span>
+                          {e.presenter && (
+                            <span className="text-gray-500 ml-1">— {e.presenter}</span>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Past events */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="font-serif text-2xl font-bold text-forest mb-6">
-              Past Events
-            </h2>
-            <ul className="divide-y divide-parchment border border-parchment rounded-xl bg-white overflow-hidden">
-              {pastEvents.map((e) => (
-                <li key={e.title} className="flex justify-between items-center px-6 py-4 text-sm">
-                  <span className="text-gray-700 font-medium">{e.title}</span>
-                  <span className="text-gray-400">{e.date}</span>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
-        </div>
-      </section>
     </>
-  )
-}
-
-function ClockIcon() {
-  return (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  )
-}
-
-function LocationIcon() {
-  return (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
   )
 }

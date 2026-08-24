@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
+import { imgs } from '../images'
 
 function FadeIn({
   children,
@@ -25,12 +26,11 @@ function FadeIn({
 }
 
 const galleryImages = [
-  { seed: 'garden1', w: 800, h: 600, alt: 'Blooming perennial garden border' },
-  { seed: 'garden2', w: 800, h: 1000, alt: 'Rose garden in full bloom' },
-  { seed: 'garden3', w: 800, h: 600, alt: 'Cottage garden pathway' },
-  { seed: 'floral1', w: 800, h: 800, alt: 'Floral arrangement' },
-  { seed: 'garden4', w: 800, h: 600, alt: 'Vegetable and herb garden' },
-  { seed: 'garden5', w: 800, h: 1000, alt: 'Ornamental grass planting' },
+  { url: imgs.img2, alt: 'Garden club planting' },
+  { url: imgs.img3, alt: 'Seasonal floral arrangement' },
+  { url: imgs.img4, alt: 'Garden border in bloom' },
+  { url: imgs.img5, alt: 'Club garden showcase' },
+  { url: imgs.img7, alt: 'Member garden highlight' },
 ]
 
 export default function Home() {
@@ -39,7 +39,7 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="relative -mt-16 lg:-mt-20 h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&auto=format&fit=crop"
+          src={imgs.img1}
           alt="Lush garden in full bloom"
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
@@ -170,29 +170,29 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                seed: '42',
-                title: 'Old York Road Streetscape',
-                desc: 'Seasonal plantings and perennial borders along the Old York Road corridor beautifying the gateway to our borough.',
+                imageUrl: imgs.img1,
+                title: 'Richard Wall House Herb Garden',
+                desc: 'Members cultivate and maintain the historic herb garden at Richard Wall House in Elkins Park — a working garden and the site of our annual plant sale.',
                 status: 'Active',
               },
               {
-                seed: '17',
-                title: 'Community Pollinator Garden',
-                desc: 'A thriving native plant sanctuary at Abington Township Community Park supporting bees, butterflies, and beneficial insects.',
+                imageUrl: imgs.img2,
+                title: 'Jenkintown/Wyncote Train Station',
+                desc: 'Members water flower boxes and seasonal displays at the train station multiple times a week, keeping it welcoming for commuters year-round.',
                 status: 'Active',
               },
               {
-                seed: '83',
-                title: 'School Garden Partnership',
-                desc: 'Collaborating with Jenkintown Elementary to establish raised-bed vegetable gardens and outdoor classrooms.',
+                imageUrl: imgs.img7,
+                title: "Children's Garden",
+                desc: "Club members work alongside preschool students at Christ's Lutheran Church in Oreland to plant and tend a children's garden.",
                 status: 'Active',
               },
             ].map((project, i) => (
-              <FadeIn key={project.seed} delay={i * 100}>
+              <FadeIn key={project.title} delay={i * 100}>
                 <article className="bg-white rounded-xl overflow-hidden shadow-sm border border-parchment hover:shadow-md transition-shadow group">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={`https://picsum.photos/seed/${project.seed}/800/600`}
+                      src={project.imageUrl}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -254,10 +254,10 @@ export default function Home() {
 
           <div className="columns-2 md:columns-3 gap-4 space-y-4">
             {galleryImages.map((img, i) => (
-              <FadeIn key={img.seed} delay={i * 80}>
+              <FadeIn key={img.url} delay={i * 80}>
                 <div className="break-inside-avoid overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <img
-                    src={`https://picsum.photos/seed/${img.seed}/${img.w}/${img.h}`}
+                    src={img.url}
                     alt={img.alt}
                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                     loading="lazy"
