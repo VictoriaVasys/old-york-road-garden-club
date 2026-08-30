@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import oyrgcTree from '../assets/oyrgc-tree.png'
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -35,7 +36,11 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
             onClick={() => setMenuOpen(false)}
           >
-            <LeafIcon className="w-7 h-7 text-sage group-hover:text-forest transition-colors flex-shrink-0" />
+            <img
+              src={oyrgcTree}
+              alt=""
+              className="h-10 w-auto flex-shrink-0"
+            />
             <span className="font-serif text-forest font-semibold text-lg leading-tight">
               Old York Road<br className="hidden sm:block" />
               <span className="sm:block hidden text-sm font-normal tracking-wide">Garden Club</span>
@@ -120,45 +125,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
-}
-
-function LeafIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 2C6.48 2 2 6.48 2 12c0 2.76 1.12 5.26 2.93 7.07C6.74 20.88 9.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"
-        fill="none"
-      />
-      <path
-        d="M17 8C13 8 9 11 9 15c0 1.5.5 2.5 1 3.5C11.5 20 12 20 13 20c4-1 6-4 6-8 0-1.5-.4-2.8-1.2-3.8-.5-.7-1.3-1.2-2.2-1.4C16.4 7.1 17 7.5 17 8z"
-        fill="currentColor"
-        opacity="0.3"
-      />
-      <path
-        d="M5 20c0 0 2-8 9-12"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M14 6c0 0 4 2 4 8s-4 7-7 7"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M5 20c3-2 6-4 9-8"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
   )
 }

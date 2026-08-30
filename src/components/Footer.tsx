@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import oyrgcSealMint from '../assets/oyrgc-seal-mint.png'
+import oyrgcTreeMint from '../assets/oyrgc-tree-mint.png'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -20,14 +20,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand column */}
           <div>
-            <img
-              src={oyrgcSealMint}
-              alt="Seal of the Old York Road Garden Club, 1935"
-              className="w-16 h-16 mb-4 opacity-90"
-            />
-            <h3 className="font-serif text-xl font-semibold text-white mb-2">
-              Old York Road Garden Club
-            </h3>
+            <div className="flex items-center gap-3 mb-3">
+              <img
+                src={oyrgcTreeMint}
+                alt=""
+                className="h-10 w-auto flex-shrink-0"
+              />
+              <h3 className="font-serif text-xl font-semibold text-white">
+                Old York Road Garden Club
+              </h3>
+            </div>
             <p className="text-mint/80 text-sm leading-relaxed mb-4">
               Cultivating Community Since 1935
             </p>
