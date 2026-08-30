@@ -1,5 +1,6 @@
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
+import oyrgcSeal from '../assets/oyrgc-seal.png'
 
 const pillars = [
   {
@@ -96,9 +97,12 @@ export default function About() {
                   alt="Seasonal garden display"
                   className="rounded-2xl shadow-lg w-full object-cover h-[480px]"
                 />
-                <div className="absolute -bottom-5 -left-5 bg-forest text-white p-5 rounded-xl shadow-lg">
-                  <p className="font-serif text-3xl font-bold text-mint">1935</p>
-                  <p className="text-sm text-white/80 mt-0.5">Year Founded</p>
+                <div className="absolute -bottom-8 -left-8 bg-cream p-2.5 rounded-full shadow-lg">
+                  <img
+                    src={oyrgcSeal}
+                    alt="Seal of the Old York Road Garden Club, 1935"
+                    className="w-24 h-24 sm:w-28 sm:h-28"
+                  />
                 </div>
                 <div className="absolute -top-5 -right-5 bg-gold text-white p-5 rounded-xl shadow-lg">
                   <p className="font-serif text-3xl font-bold">90+</p>
