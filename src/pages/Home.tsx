@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
-import oyrgcSealMint from '../assets/oyrgc-seal-mint.png'
+import oyrgcSealWhite from '../assets/oyrgc-seal-white.png'
 import {
   upcomingEvents2026_2027,
   getNextUpcomingEvent,
@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative -mt-16 lg:-mt-20 h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative -mt-16 lg:-mt-20 h-screen min-h-[600px] flex flex-col overflow-hidden">
         <img
           src={imgs.img1}
           alt="Lush garden in full bloom"
@@ -64,38 +64,43 @@ export default function Home() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65" />
 
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
-            Jenkintown &amp; Abington, Pennsylvania
-          </p>
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Cultivating Beauty,
-            <br />
-            <em className="not-italic text-mint">Building Community</em>
-          </h1>
-          <img
-            src={oyrgcSealMint}
-            alt="Seal of the Old York Road Garden Club, established 1935"
-            className="w-40 sm:w-52 lg:w-60 h-auto mx-auto mb-10"
-          />
-          <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-            For over seven decades, we've united passionate gardeners to enrich
-            our neighborhoods through horticultural excellence, civic
-            beautification, and lifelong friendship.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/events"
-              className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors shadow-lg"
-            >
-              Upcoming Events
-            </Link>
-            <Link
-              to="/about"
-              className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold rounded-md transition-colors backdrop-blur-sm"
-            >
-              Learn About Us
-            </Link>
+        {/* Guaranteed clearance below the fixed navbar */}
+        <div className="h-16 lg:h-20 flex-shrink-0" aria-hidden="true" />
+
+        <div className="relative z-10 flex-1 flex items-center justify-center px-4">
+          <div className="text-center text-white max-w-4xl mx-auto">
+            <img
+              src={oyrgcSealWhite}
+              alt="Seal of the Old York Road Garden Club, established 1935"
+              className="w-40 sm:w-52 lg:w-60 h-auto mx-auto mb-8"
+            />
+            <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
+              Jenkintown &amp; Abington, Pennsylvania
+            </p>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              Cultivating Beauty,
+              <br />
+              <em className="not-italic text-mint">Building Community</em>
+            </h1>
+            <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+              For over seven decades, we've united passionate gardeners to enrich
+              our neighborhoods through horticultural excellence, civic
+              beautification, and lifelong friendship.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/events"
+                className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors shadow-lg"
+              >
+                Upcoming Events
+              </Link>
+              <Link
+                to="/about"
+                className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold rounded-md transition-colors backdrop-blur-sm"
+              >
+                Learn About Us
+              </Link>
+            </div>
           </div>
         </div>
 
