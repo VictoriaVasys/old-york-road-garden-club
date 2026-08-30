@@ -160,7 +160,7 @@ export default function Home() {
                       to={nextEvent.flowerShowSlug ? `/events/${nextEvent.flowerShowSlug}` : '/events'}
                       className="inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
                     >
-                      {nextEvent.flowerShowSlug ? 'Standard Flower Show Details' : 'View All Events'}
+                      {nextEvent.flowerShowSlug ? 'Flower Show Details' : 'View All Events'}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>

@@ -242,7 +242,7 @@ export default function Events() {
                           to={`/events/${e.flowerShowSlug}`}
                           className="mt-auto pt-3 text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1"
                         >
-                          Standard Flower Show Details
+                          Flower Show Details
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>

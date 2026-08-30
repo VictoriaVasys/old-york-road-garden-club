@@ -21,10 +21,10 @@ export default function FlowerShowDetail() {
         </Link>
 
         <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-2">
-          Standard Flower Show
+          Flower Show
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-1">
-          {meeting ? meeting.title : 'Standard Flower Show'}
+          {meeting ? meeting.title : 'Flower Show'}
         </h1>
         {meeting && <p className="text-gray-500 mb-8">{meeting.date}</p>}
 
@@ -93,6 +93,22 @@ export default function FlowerShowDetail() {
             </p>
           </div>
         )}
+
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-parchment/40 border border-parchment rounded-xl px-6 py-4">
+          <p className="text-sm text-bark">
+            <span className="font-semibold">Awards:</span> First – 5 pts · Second – 4 pts ·
+            Third – 3 pts · Honorable Mention – 2 pts
+          </p>
+          <Link
+            to="/events/flower-show-guide"
+            className="text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1 flex-shrink-0"
+          >
+            Full Flower Show Guide
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   )
