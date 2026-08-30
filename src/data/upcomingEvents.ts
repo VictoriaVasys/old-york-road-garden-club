@@ -79,3 +79,22 @@ export const upcomingEvents2026_2027: UpcomingEvent[] = [
       'Live demonstration of several floral arrangements, adhering to the strict rules of GCFP',
   },
 ]
+
+export function parseEventDate(dateStr: string): Date {
+  return new Date(dateStr)
+}
+
+/** Returns the soonest event that hasn't happened yet, or undefined if none remain. */
+export function getNextUpcomingEvent(
+  events: UpcomingEvent[],
+  referenceDate: Date = new Date(),
+): UpcomingEvent | undefined {
+  const today = new Date(
+    referenceDate.getFullYear(),
+    referenceDate.getMonth(),
+    referenceDate.getDate(),
+  )
+  return events
+    .filter((e) => parseEventDate(e.date) >= today)
+    .sort((a, b) => parseEventDate(a.date).getTime() - parseEventDate(b.date).getTime())[0]
+}

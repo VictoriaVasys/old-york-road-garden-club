@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
-import { upcomingEvents2026_2027, type UpcomingEvent } from '../data/upcomingEvents'
+import { upcomingEvents2026_2027, parseEventDate, type UpcomingEvent } from '../data/upcomingEvents'
 
 const typeBadgeStyles: Record<UpcomingEvent['type'], string> = {
   Workshop: 'bg-mint/30 text-forest',
@@ -10,7 +10,14 @@ const typeBadgeStyles: Record<UpcomingEvent['type'], string> = {
   Social: 'bg-parchment text-bark',
 }
 
-const programYears: { year: string; events: { date: string; title: string; presenter?: string }[] }[] = [
+interface PastProgramEvent {
+  date: string
+  title: string
+  presenter?: string
+  flowerShowSlug?: string
+}
+
+const programYears: { year: string; events: PastProgramEvent[] }[] = [
   {
     year: '2025–2026',
     events: [
@@ -99,6 +106,23 @@ const programYears: { year: string; events: { date: string; title: string; prese
   },
 ]
 
+function ClockIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  )
+}
+
+function LocationIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  )
+}
+
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [ref, inView] = useInView<HTMLDivElement>()
   return (
@@ -113,6 +137,28 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Events() {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  const upcoming = upcomingEvents2026_2027.filter((e) => parseEventDate(e.date) >= today)
+  const past2026_2027 = upcomingEvents2026_2027.filter((e) => parseEventDate(e.date) < today)
+
+  const programYearsWithCurrent =
+    past2026_2027.length > 0
+      ? [
+          {
+            year: '2026–2027',
+            events: past2026_2027.map((e) => ({
+              date: e.date,
+              title: e.title,
+              presenter: [e.presenter, e.description].filter(Boolean).join(' — ') || undefined,
+              flowerShowSlug: e.flowerShowSlug,
+            })),
+          },
+          ...programYears,
+        ]
+      : programYears
+
   return (
     <>
       {/* Page hero */}
@@ -147,42 +193,66 @@ export default function Events() {
             </p>
           </FadeIn>
 
+          {upcoming.length === 0 && (
+            <p className="text-gray-500 text-sm mb-6">
+              No upcoming events are scheduled right now — check back soon.
+            </p>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {upcomingEvents2026_2027.map((e, i) => (
-              <FadeIn key={e.date} delay={i * 60}>
-                <div className="bg-white border border-parchment rounded-xl shadow-sm p-6 h-full flex flex-col">
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <span className="text-sm font-semibold text-forest">{e.date}</span>
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${typeBadgeStyles[e.type]}`}>
-                      {e.type}
-                    </span>
+            {upcoming.map((e, i) => {
+              const eventDate = parseEventDate(e.date)
+              return (
+                <FadeIn key={e.date} delay={i * 60}>
+                  <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-parchment h-full flex">
+                    <div className="bg-forest text-white px-6 py-6 flex flex-col items-center justify-center min-w-[110px] text-center">
+                      <span className="font-serif text-4xl font-bold leading-none text-mint">
+                        {eventDate.getDate()}
+                      </span>
+                      <span className="text-sm font-medium mt-1">
+                        {eventDate.toLocaleDateString('en-US', { month: 'long' })}
+                      </span>
+                      <span className="text-white/60 text-xs">{eventDate.getFullYear()}</span>
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <span
+                        className={`self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${typeBadgeStyles[e.type]}`}
+                      >
+                        {e.type}
+                      </span>
+                      <h3 className="font-serif text-lg font-bold text-forest mb-2">
+                        {e.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 mb-2">
+                        <span className="flex items-center gap-1.5">
+                          <ClockIcon /> 12:30 PM
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <LocationIcon />
+                          {e.location ?? 'Grace Presbyterian Church, Jenkintown'}
+                        </span>
+                      </div>
+                      {(e.presenter || e.description) && (
+                        <p className="text-sm text-gray-600 mb-1">
+                          {[e.presenter, e.description].filter(Boolean).join(' — ')}
+                        </p>
+                      )}
+                      {e.flowerShowSlug && (
+                        <Link
+                          to={`/events/${e.flowerShowSlug}`}
+                          className="mt-auto pt-3 text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1"
+                        >
+                          Standard Flower Show Details
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-forest mb-1.5">
-                    {e.title}
-                  </h3>
-                  {e.presenter && (
-                    <p className="text-sm text-gray-500 mb-1">{e.presenter}</p>
-                  )}
-                  {e.description && (
-                    <p className="text-sm text-gray-600 mb-1">{e.description}</p>
-                  )}
-                  {e.location && (
-                    <p className="text-sm text-gray-500 mb-1">{e.location}</p>
-                  )}
-                  {e.flowerShowSlug && (
-                    <Link
-                      to={`/events/${e.flowerShowSlug}`}
-                      className="mt-auto pt-3 text-sage hover:text-forest text-sm font-semibold inline-flex items-center gap-1"
-                    >
-                      Standard Flower Show Details
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -196,7 +266,7 @@ export default function Events() {
             </h2>
           </FadeIn>
           <div className="space-y-10">
-            {programYears.map((group, gi) => (
+            {programYearsWithCurrent.map((group, gi) => (
               <FadeIn key={group.year} delay={gi * 60}>
                 <div>
                   <h3 className="font-serif text-lg font-bold text-forest mb-3 pb-2 border-b border-parchment">
@@ -210,6 +280,14 @@ export default function Events() {
                           <span className="text-gray-800 font-medium">{e.title}</span>
                           {e.presenter && (
                             <span className="text-gray-500 ml-1">— {e.presenter}</span>
+                          )}
+                          {e.flowerShowSlug && (
+                            <Link
+                              to={`/events/${e.flowerShowSlug}`}
+                              className="text-sage hover:text-forest ml-2 font-semibold"
+                            >
+                              Details
+                            </Link>
                           )}
                         </div>
                       </li>

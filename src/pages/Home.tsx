@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
+import {
+  upcomingEvents2026_2027,
+  getNextUpcomingEvent,
+  parseEventDate,
+  type UpcomingEvent,
+} from '../data/upcomingEvents'
+
+const typeBadgeStyles: Record<UpcomingEvent['type'], string> = {
+  Workshop: 'bg-mint/30 text-forest',
+  Speaker: 'bg-sage/15 text-sage',
+  Program: 'bg-gold/15 text-gold',
+  Social: 'bg-parchment text-bark',
+}
 
 function FadeIn({
   children,
@@ -34,6 +47,9 @@ const galleryImages = [
 ]
 
 export default function Home() {
+  const nextEvent = getNextUpcomingEvent(upcomingEvents2026_2027)
+  const nextEventDate = nextEvent ? parseEventDate(nextEvent.date) : null
+
   return (
     <>
       {/* ── Hero ── */}
@@ -100,51 +116,74 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={100}>
-            <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-parchment max-w-4xl mx-auto">
-              <div className="flex flex-col md:flex-row">
-                <div className="bg-forest text-white px-10 py-10 md:py-0 flex flex-col items-center justify-center md:min-w-[180px] text-center">
-                  <span className="font-serif text-6xl font-bold leading-none text-mint">16</span>
-                  <span className="text-lg font-medium mt-1">August</span>
-                  <span className="text-white/60 text-sm">2026</span>
-                </div>
-                <div className="p-8 flex-1">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs font-semibold bg-mint/30 text-forest px-3 py-1 rounded-full">
-                      Garden Tour
+            {nextEvent && nextEventDate ? (
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-parchment max-w-4xl mx-auto">
+                <div className="flex flex-col md:flex-row">
+                  <div className="bg-forest text-white px-10 py-10 md:py-0 flex flex-col items-center justify-center md:min-w-[180px] text-center">
+                    <span className="font-serif text-6xl font-bold leading-none text-mint">
+                      {nextEventDate.getDate()}
                     </span>
-                    <span className="text-xs font-semibold bg-parchment text-bark px-3 py-1 rounded-full">
-                      Members &amp; Guests Welcome
+                    <span className="text-lg font-medium mt-1">
+                      {nextEventDate.toLocaleDateString('en-US', { month: 'long' })}
                     </span>
+                    <span className="text-white/60 text-sm">{nextEventDate.getFullYear()}</span>
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-forest mb-3">
-                    Late Summer Garden Tour
-                  </h3>
-                  <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
-                    <span className="flex items-center gap-1.5">
-                      <ClockIcon /> 10:00 AM – 3:00 PM
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <LocationIcon /> Self-guided, multiple private gardens
-                    </span>
+                  <div className="p-8 flex-1">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span
+                        className={`text-xs font-semibold px-3 py-1 rounded-full ${typeBadgeStyles[nextEvent.type]}`}
+                      >
+                        {nextEvent.type}
+                      </span>
+                      <span className="text-xs font-semibold bg-parchment text-bark px-3 py-1 rounded-full">
+                        Members &amp; Guests Welcome
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-2xl font-bold text-forest mb-3">
+                      {nextEvent.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
+                      <span className="flex items-center gap-1.5">
+                        <ClockIcon /> 12:30 PM
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <LocationIcon />
+                        {nextEvent.location ?? 'Grace Presbyterian Church, 444 Old York Road, Jenkintown'}
+                      </span>
+                    </div>
+                    {(nextEvent.presenter || nextEvent.description) && (
+                      <p className="text-gray-600 leading-relaxed mb-6">
+                        {[nextEvent.presenter, nextEvent.description].filter(Boolean).join(' — ')}
+                      </p>
+                    )}
+                    <Link
+                      to={nextEvent.flowerShowSlug ? `/events/${nextEvent.flowerShowSlug}` : '/events'}
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
+                    >
+                      {nextEvent.flowerShowSlug ? 'Standard Flower Show Details' : 'View All Events'}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                   </div>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    Explore six private gardens throughout Jenkintown and Abington as their late-summer
-                    plantings reach peak beauty. Maps and tickets available at the Jenkintown
-                    Library starting August 10th. A beloved annual tradition showcasing the artistry
-                    of our members' gardens.
-                  </p>
-                  <Link
-                    to="/events"
-                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
-                  >
-                    View All Events
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-parchment max-w-4xl mx-auto p-10 text-center">
+                <p className="text-gray-600 mb-6">
+                  We're finalizing our next program year — check back soon for upcoming events.
+                </p>
+                <Link
+                  to="/events"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
+                >
+                  View All Events
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            )}
           </FadeIn>
         </div>
       </section>
