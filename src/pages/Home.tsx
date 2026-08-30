@@ -68,38 +68,40 @@ export default function Home() {
         <div className="h-16 lg:h-20 flex-shrink-0" aria-hidden="true" />
 
         <div className="relative z-10 flex-1 flex items-center justify-center px-4">
-          <div className="text-center text-white max-w-4xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14 max-w-5xl mx-auto text-center lg:text-left">
             <img
               src={oyrgcSealWhite}
               alt="Seal of the Old York Road Garden Club, established 1935"
-              className="w-40 sm:w-52 lg:w-60 h-auto mx-auto mb-8"
+              className="w-40 sm:w-48 lg:w-56 h-auto flex-shrink-0"
             />
-            <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
-              Jenkintown &amp; Abington, Pennsylvania
-            </p>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              Cultivating Beauty,
-              <br />
-              <em className="not-italic text-mint">Building Community</em>
-            </h1>
-            <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-              For over seven decades, we've united passionate gardeners to enrich
-              our neighborhoods through horticultural excellence, civic
-              beautification, and lifelong friendship.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/events"
-                className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors shadow-lg"
-              >
-                Upcoming Events
-              </Link>
-              <Link
-                to="/about"
-                className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold rounded-md transition-colors backdrop-blur-sm"
-              >
-                Learn About Us
-              </Link>
+            <div className="text-white">
+              <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
+                Jenkintown &amp; Abington, Pennsylvania
+              </p>
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                Cultivating Beauty,
+                <br />
+                <em className="not-italic text-mint">Building Community</em>
+              </h1>
+              <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                For over seven decades, we've united passionate gardeners to enrich
+                our neighborhoods through horticultural excellence, civic
+                beautification, and lifelong friendship.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/events"
+                  className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors shadow-lg"
+                >
+                  Upcoming Events
+                </Link>
+                <Link
+                  to="/about"
+                  className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-semibold rounded-md transition-colors backdrop-blur-sm"
+                >
+                  Learn About Us
+                </Link>
+              </div>
             </div>
           </div>
         </div>
