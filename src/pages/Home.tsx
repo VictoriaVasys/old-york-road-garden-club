@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { imgs } from '../images'
+import oyrgcSealMint from '../assets/oyrgc-seal-mint.png'
 import {
   upcomingEvents2026_2027,
   getNextUpcomingEvent,
@@ -72,6 +73,11 @@ export default function Home() {
             <br />
             <em className="not-italic text-mint">Building Community</em>
           </h1>
+          <img
+            src={oyrgcSealMint}
+            alt="Seal of the Old York Road Garden Club, established 1935"
+            className="w-40 sm:w-52 lg:w-60 h-auto mx-auto mb-10"
+          />
           <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
             For over seven decades, we've united passionate gardeners to enrich
             our neighborhoods through horticultural excellence, civic
@@ -144,7 +150,7 @@ export default function Home() {
                     </h3>
                     <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
                       <span className="flex items-center gap-1.5">
-                        <ClockIcon /> 11:30 AM ET
+                        <ClockIcon /> {nextEvent.time ?? '11:30 AM ET'}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <LocationIcon />

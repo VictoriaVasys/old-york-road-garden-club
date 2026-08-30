@@ -225,7 +225,7 @@ export default function Events() {
                       </h3>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 mb-2">
                         <span className="flex items-center gap-1.5">
-                          <ClockIcon /> 11:30 AM ET
+                          <ClockIcon /> {e.time ?? '11:30 AM ET'}
                         </span>
                         <span className="flex items-center gap-1.5">
                           <LocationIcon />

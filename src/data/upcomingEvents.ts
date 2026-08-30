@@ -5,6 +5,8 @@ export interface UpcomingEvent {
   presenter?: string
   description?: string
   location?: string
+  /** Overrides the default 11:30 AM ET club meeting time, for events on their own schedule. */
+  time?: string
   /** Slug for a linked Standard Flower Show detail page, when this meeting includes one. */
   flowerShowSlug?: string
 }
@@ -16,6 +18,13 @@ export const upcomingEvents2026_2027: UpcomingEvent[] = [
     type: 'Workshop',
     presenter: 'Marda Craig, Presenter',
     flowerShowSlug: 'sep-2026',
+  },
+  {
+    date: 'Sep 27, 2026',
+    title: 'Jenkintown Festival of the Arts',
+    type: 'Social',
+    time: '1:00 – 6:00 PM',
+    location: 'Town Square, Jenkintown',
   },
   {
     date: 'Oct 8, 2026',
