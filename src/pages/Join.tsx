@@ -131,9 +131,9 @@ export default function Join() {
                 Come to a Meeting First
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Meetings are held on the <strong>second Thursday</strong> of each month.
-                Lunch is served at <strong>11:30 AM</strong>, with the program beginning
-                at <strong>12:30 PM</strong>. Meetings are free and open to the public.
+                Meetings are held on the <strong>second Thursday</strong> of each month,
+                September through June (except January), beginning at{' '}
+                <strong>11:30 AM ET</strong>. Meetings are free and open to the public.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 <strong>Grace Presbyterian Church</strong><br />

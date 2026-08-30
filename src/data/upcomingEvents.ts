@@ -77,6 +77,7 @@ export const upcomingEvents2026_2027: UpcomingEvent[] = [
     presenter: 'Barbara Leiby, Floral Designer and Workshop Instructor',
     description:
       'Live demonstration of several floral arrangements, adhering to the strict rules of GCFP',
+    flowerShowSlug: 'jun-2027',
   },
 ]
 

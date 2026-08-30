@@ -187,7 +187,7 @@ export default function Events() {
               2026–2027 Program Year
             </h2>
             <p className="text-gray-600 text-sm max-w-2xl mb-10">
-              Monthly meetings are held on the second Thursday of each month at 12:30 PM
+              Monthly meetings are held on the second Thursday of each month at 11:30 AM ET
               at Grace Presbyterian Church, 444 Old York Road, Jenkintown. Meetings are
               free and open to the public.
             </p>
@@ -225,7 +225,7 @@ export default function Events() {
                       </h3>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 mb-2">
                         <span className="flex items-center gap-1.5">
-                          <ClockIcon /> 12:30 PM
+                          <ClockIcon /> 11:30 AM ET
                         </span>
                         <span className="flex items-center gap-1.5">
                           <LocationIcon />

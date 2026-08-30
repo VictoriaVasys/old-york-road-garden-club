@@ -1,36 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
 import { upcomingEvents2026_2027 } from '../data/upcomingEvents'
-
-const sampleHorticulturalClasses = [
-  'Dahlia, 1 bloom, large, 4" and over',
-  'Dahlia, small, under 4"',
-  'Chrysanthemum, 1 stem',
-  'Herbaceous perennial, other than chrysanthemum (e.g., helianthus, solidago, rudbeckia)',
-  'Heuchera, 1 stem, no flower',
-  'Tagetes (marigold), 3 stems, same variety, 1 container',
-  'Rose, 1 stem or spray, floribunda, polyanthus or shrub',
-  'Coleus, 1 stem, no flower',
-  'Fruited or berried branch — a. large (e.g., crabapple, apple, pear); b. small (e.g., callicarpa (beautyberry), nandina)',
-  'Orchid',
-  'Houseplant, flowering, other than orchid',
-  'Houseplant, foliage',
-  'Any bloom not listed above (for judging credit)',
-]
-
-const sampleDesignClasses = [
-  {
-    name: "MUM'S THE WORD",
-    desc: 'Traditional mass design using chrysanthemums.',
-  },
-  {
-    name: 'CLOSE ENCOUNTERS OF THE THIRD KIND',
-    desc: 'Parallel design, using 3 groupings of plant material in a strong parallel manner in one container. Examples online.',
-  },
-]
+import { flowerShows } from '../data/flowerShows'
 
 export default function FlowerShowDetail() {
   const { slug } = useParams()
   const meeting = upcomingEvents2026_2027.find((e) => e.flowerShowSlug === slug)
+  const show = slug ? flowerShows[slug] : undefined
 
   return (
     <section className="bg-cream py-16">
@@ -53,46 +28,71 @@ export default function FlowerShowDetail() {
         </h1>
         {meeting && <p className="text-gray-500 mb-8">{meeting.date}</p>}
 
-        <div className="bg-white border border-parchment rounded-xl p-6 sm:p-8 mb-8">
-          <p className="text-gray-600 text-sm leading-relaxed">
-            This month's entry classes haven't been finalized yet — we're waiting on the current
-            yearbook to be published. In the meantime, here's a sample from a past Standard Flower
-            Show so you can see the kind of classes to expect. Check back closer to the meeting
-            date for this month's exact classes.
-          </p>
-        </div>
+        {show ? (
+          <div className="bg-white border border-parchment rounded-xl overflow-hidden">
+            <div className="px-6 sm:px-8 py-5 border-b border-parchment bg-parchment/40">
+              <p className="text-sm text-bark">
+                Closing time for entries is {show.closingTime} ET. All exhibits must be staged and
+                in place before judging begins.
+              </p>
+            </div>
 
-        <div className="bg-white border border-parchment rounded-xl overflow-hidden">
-          <div className="px-6 sm:px-8 py-5 border-b border-parchment bg-parchment/40">
-            <p className="text-sm text-bark">
-              Sample show — closing time for entries is 11:00am.
+            <div className="px-6 sm:px-8 py-6 border-b border-parchment">
+              <h2 className="font-serif text-lg font-bold text-forest mb-4">
+                Horticulture Division
+              </h2>
+              <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700 leading-relaxed">
+                {show.horticulture.map((c) => (
+                  <li key={c.label}>
+                    {c.label}
+                    {c.subitems && (
+                      <ul className="list-[lower-alpha] list-inside ml-5 mt-1 space-y-1 text-gray-600">
+                        {c.subitems.map((s) => (
+                          <li key={s}>{s}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ol>
+              {show.horticultureTip && (
+                <p className="mt-5 text-sm text-gray-500 leading-relaxed bg-parchment/40 rounded-lg px-4 py-3">
+                  <span className="font-semibold text-bark">Tip: </span>
+                  {show.horticultureTip}
+                </p>
+              )}
+            </div>
+
+            <div className="px-6 sm:px-8 py-6">
+              <h2 className="font-serif text-lg font-bold text-forest mb-4">
+                Design Division
+              </h2>
+              <ul className="space-y-4 text-sm text-gray-700 leading-relaxed">
+                {show.design.map((c) => (
+                  <li key={c.title}>
+                    <span className="font-semibold text-forest uppercase">{c.title}</span> —{' '}
+                    {c.description}
+                  </li>
+                ))}
+              </ul>
+              {show.designTips && show.designTips.length > 0 && (
+                <div className="mt-5 text-sm text-gray-500 leading-relaxed bg-parchment/40 rounded-lg px-4 py-3 space-y-2">
+                  <p className="font-semibold text-bark">Tips</p>
+                  {show.designTips.map((t) => (
+                    <p key={t}>{t}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="bg-white border border-parchment rounded-xl p-6 sm:p-8">
+            <p className="text-gray-600 text-sm leading-relaxed">
+              This month's entry classes haven't been published yet — check back closer to the
+              meeting date, or see the current Yearbook for details.
             </p>
           </div>
-
-          <div className="px-6 sm:px-8 py-6 border-b border-parchment">
-            <h2 className="font-serif text-lg font-bold text-forest mb-4">
-              Horticultural Division
-            </h2>
-            <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700 leading-relaxed">
-              {sampleHorticulturalClasses.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="px-6 sm:px-8 py-6">
-            <h2 className="font-serif text-lg font-bold text-forest mb-4">
-              Design Division
-            </h2>
-            <ul className="space-y-4 text-sm text-gray-700 leading-relaxed">
-              {sampleDesignClasses.map((c) => (
-                <li key={c.name}>
-                  <span className="font-semibold text-forest">{c.name}</span> — {c.desc}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   )

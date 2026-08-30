@@ -314,7 +314,7 @@ export default function Archive() {
       <section className="bg-cream py-6 border-b border-parchment">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 text-sm">
-            Monthly meetings are held on the <strong>second Thursday</strong> of each month at <strong>12:30 PM</strong> (lunch at 11:30 AM) at <strong>Grace Presbyterian Church, 444 Old York Road, Jenkintown</strong>. Meetings are free and open to the public.
+            Monthly meetings are held on the <strong>second Thursday</strong> of each month at <strong>11:30 AM ET</strong> at <strong>Grace Presbyterian Church, 444 Old York Road, Jenkintown</strong>. Meetings are free and open to the public.
           </p>
         </div>
       </section>

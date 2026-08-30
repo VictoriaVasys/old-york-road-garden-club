@@ -61,7 +61,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Monthly Meetings</p>
-                      <p>2nd Thursday of each month<br />Lunch at 11:30 AM · Meeting at 12:30 PM</p>
+                      <p>2nd Thursday of each month<br />11:30 AM ET</p>
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Meeting Location</p>

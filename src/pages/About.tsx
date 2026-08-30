@@ -79,12 +79,12 @@ export default function About() {
                 <p className="text-gray-600 leading-relaxed mb-5">
                   Our mission is to promote interest in the art of gardening, to aid in
                   the protection of native trees, plants, and birds, and to encourage
-                  civic planning. This mission shapes everything we do — from our monthly
+                  civic planting. This mission shapes everything we do — from our monthly
                   educational programs to our hands-on civic beautification projects.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   Monthly meetings are held on the second Thursday of each month at
-                  12:30 PM (lunch at 11:30 AM) at Grace Presbyterian Church, 444 Old York
+                  11:30 AM ET at Grace Presbyterian Church, 444 Old York
                   Road, Jenkintown, PA 19046. Meetings are free and open to the public.
                 </p>
               </div>

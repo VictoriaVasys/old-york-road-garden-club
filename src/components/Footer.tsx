@@ -102,7 +102,7 @@ export default function Footer() {
                   oldyorkroadgardenclub@gmail.com
                 </a>
               </p>
-              <p>Meetings: 2nd Thursday, 12:30 PM</p>
+              <p>Meetings: 2nd Thursday, 11:30 AM ET</p>
               <p className="text-white/50 text-xs">
                 Grace Presbyterian Church, 444 Old York Rd, Jenkintown
               </p>

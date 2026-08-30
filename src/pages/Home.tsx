@@ -144,7 +144,7 @@ export default function Home() {
                     </h3>
                     <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
                       <span className="flex items-center gap-1.5">
-                        <ClockIcon /> 12:30 PM
+                        <ClockIcon /> 11:30 AM ET
                       </span>
                       <span className="flex items-center gap-1.5">
                         <LocationIcon />
