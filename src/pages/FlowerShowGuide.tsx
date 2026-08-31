@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import flowerShowBanner from '../assets/flower-show-banner.jpg'
 
 const horticultureRules = [
   'All exhibits must be grown and prepared by the exhibitor.',
@@ -93,7 +94,26 @@ const designPrinciples = [
 
 export default function FlowerShowGuide() {
   return (
-    <section className="bg-cream py-16">
+    <>
+      {/* Page hero */}
+      <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
+        <img
+          src={flowerShowBanner}
+          alt="Vase of tulips"
+          className="absolute inset-0 w-full h-full object-cover object-[center_10%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/60 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <p className="text-mint text-sm font-semibold tracking-widest uppercase mb-2">
+            Reference
+          </p>
+          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-white">
+            Flower Show Guide
+          </h1>
+        </div>
+      </section>
+
+      <section className="bg-cream py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/events"
@@ -105,12 +125,6 @@ export default function FlowerShowGuide() {
           Back to Events
         </Link>
 
-        <p className="text-sage text-sm font-semibold tracking-widest uppercase mb-2">
-          Reference
-        </p>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-forest mb-4">
-          Flower Show Guide
-        </h1>
         <p className="text-gray-600 leading-relaxed mb-10">
           These are the rules, terms, and judging criteria that apply at every monthly Flower
           Show, from the club's official Yearbook. Each month's meeting page lists that month's
@@ -118,7 +132,7 @@ export default function FlowerShowGuide() {
           stay the same all year.
         </p>
 
-        
+
           <div className="bg-white border border-parchment rounded-xl p-6 sm:p-8 mb-8">
             <h2 className="font-serif text-lg font-bold text-forest mb-3">General Rules</h2>
             <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
@@ -246,8 +260,8 @@ export default function FlowerShowGuide() {
               demonstrations at our regular meetings.
             </div>
           </div>
-        
       </div>
-    </section>
+      </section>
+    </>
   )
 }
