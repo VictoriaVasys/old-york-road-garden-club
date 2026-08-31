@@ -75,9 +75,6 @@ export default function Home() {
               className="w-40 sm:w-48 lg:w-56 h-auto flex-shrink-0"
             />
             <div className="text-white">
-              <p className="text-mint text-sm font-medium tracking-[0.25em] uppercase mb-6">
-                Jenkintown &amp; Abington, Pennsylvania
-              </p>
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
                 Cultivating Beauty,
                 <br />
