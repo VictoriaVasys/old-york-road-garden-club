@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative -mt-16 lg:-mt-20 h-screen min-h-[600px] flex flex-col overflow-hidden">
+      <section className="relative -mt-16 lg:-mt-20 min-h-screen flex flex-col">
         <img
           src={imgs.img1}
           alt="Lush garden in full bloom"
