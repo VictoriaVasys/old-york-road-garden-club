@@ -84,9 +84,28 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-label="Toggle navigation menu"
           >
-            <span className="block w-5 h-0.5 bg-current mb-1.5 transition-transform" style={{ transform: menuOpen ? 'rotate(45deg) translate(2px, 6px)' : 'none' }} />
-            <span className="block w-5 h-0.5 bg-current mb-1.5 transition-opacity" style={{ opacity: menuOpen ? 0 : 1 }} />
-            <span className="block w-5 h-0.5 bg-current transition-transform" style={{ transform: menuOpen ? 'rotate(-45deg) translate(2px, -6px)' : 'none' }} />
+            <span className="relative block w-5 h-5">
+              <span
+                className="absolute left-0 top-1 block w-5 h-0.5 bg-current transition-all duration-200"
+                style={
+                  menuOpen
+                    ? { top: '50%', transform: 'translateY(-50%) rotate(45deg)' }
+                    : { top: '0.125rem', transform: 'none' }
+                }
+              />
+              <span
+                className="absolute left-0 top-1/2 -translate-y-1/2 block w-5 h-0.5 bg-current transition-opacity duration-200"
+                style={{ opacity: menuOpen ? 0 : 1 }}
+              />
+              <span
+                className="absolute left-0 bottom-1 block w-5 h-0.5 bg-current transition-all duration-200"
+                style={
+                  menuOpen
+                    ? { bottom: '50%', transform: 'translateY(50%) rotate(-45deg)' }
+                    : { bottom: '0.125rem', transform: 'none' }
+                }
+              />
+            </span>
           </button>
         </div>
       </div>

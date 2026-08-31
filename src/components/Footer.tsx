@@ -24,10 +24,10 @@ export default function Footer() {
               <img
                 src={oyrgcTreeWhite}
                 alt=""
-                className="h-14 w-auto flex-shrink-0"
+                className="h-10 sm:h-14 w-auto flex-shrink-0"
               />
               <div>
-                <h3 className="font-serif text-xl font-semibold text-white">
+                <h3 className="font-serif text-lg sm:text-xl font-semibold text-white leading-tight">
                   Old York Road Garden Club
                 </h3>
                 <p className="text-mint/80 text-sm leading-relaxed">
