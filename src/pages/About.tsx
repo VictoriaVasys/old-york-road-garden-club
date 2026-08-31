@@ -44,8 +44,8 @@ export default function About() {
       {/* Hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src={imgs.img10}
-          alt="Garden club members at a plant sale"
+          src={imgs.phsWindowsill}
+          alt="PHS windowsill floral display"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/55 to-transparent" />
