@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import oyrgcTreeMint from '../assets/oyrgc-tree-mint.png'
+import oyrgcTreeWhite from '../assets/oyrgc-tree-white.png'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -22,7 +22,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <img
-                src={oyrgcTreeMint}
+                src={oyrgcTreeWhite}
                 alt=""
                 className="h-10 w-auto flex-shrink-0"
               />
