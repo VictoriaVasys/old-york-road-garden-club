@@ -168,7 +168,7 @@ export default function CivicProjects() {
         <img
           src={imgs.img1}
           alt="Wall House herb garden"
-          className="absolute inset-0 w-full h-full object-cover object-[50%_calc(50%+20px)]"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_calc(50%+40px)]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/55 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
