@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import flowerShowBanner from '../assets/flower-show-banner.jpg'
+import { imgs } from '../images'
 
 const horticultureRules = [
   'All exhibits must be grown and prepared by the exhibitor.',
@@ -98,9 +98,9 @@ export default function FlowerShowGuide() {
       {/* Page hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src={flowerShowBanner}
-          alt="Vase of tulips"
-          className="absolute inset-0 w-full h-full object-cover object-[center_10%]"
+          src={imgs.img10}
+          alt="Plant sale raffle basket"
+          className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/60 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
