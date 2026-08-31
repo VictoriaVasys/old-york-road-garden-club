@@ -20,8 +20,8 @@ export default function Contact() {
       {/* Hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src={imgs.img7}
-          alt="Children's nursery garden at Christ Lutheran Church"
+          src={imgs.img4}
+          alt="Train station fall planting 2024"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/55 to-transparent" />

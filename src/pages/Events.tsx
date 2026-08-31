@@ -164,8 +164,8 @@ export default function Events() {
       {/* Page hero */}
       <section className="relative h-72 sm:h-80 flex items-end pb-12 overflow-hidden">
         <img
-          src={imgs.img11}
-          alt="Garden club outdoor gathering"
+          src={imgs.phsWindowsill}
+          alt="PHS windowsill floral display"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/60 to-transparent" />
