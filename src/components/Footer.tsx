@@ -20,19 +20,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-1.5 mb-3">
+            <div className="flex items-center gap-3 mb-4">
               <img
                 src={oyrgcTreeWhite}
                 alt=""
-                className="h-10 w-auto flex-shrink-0"
+                className="h-14 w-auto flex-shrink-0"
               />
-              <h3 className="font-serif text-xl font-semibold text-white">
-                Old York Road Garden Club
-              </h3>
+              <div>
+                <h3 className="font-serif text-xl font-semibold text-white">
+                  Old York Road Garden Club
+                </h3>
+                <p className="text-mint/80 text-sm leading-relaxed">
+                  Cultivating Community Since 1935
+                </p>
+              </div>
             </div>
-            <p className="text-mint/80 text-sm leading-relaxed mb-4">
-              Cultivating Community Since 1935
-            </p>
             <p className="text-white/60 text-sm leading-relaxed">
               Dedicated to horticultural excellence, civic beautification, and
               fostering a love of gardening throughout the Jenkintown and

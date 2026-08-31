@@ -33,7 +33,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-1.5 group"
             onClick={() => setMenuOpen(false)}
           >
             <img
