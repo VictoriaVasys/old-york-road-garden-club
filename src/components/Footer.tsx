@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-1.5 mb-3">
               <img
                 src={oyrgcTreeWhite}
                 alt=""
