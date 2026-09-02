@@ -12,7 +12,7 @@ const benefits = [
 ]
 
 const officers = [
-  { title: 'President', name: 'Jane Klotz' },
+  { title: 'President', name: 'Linda Freedman' },
   { title: 'Vice President', name: 'Linda Freedman' },
   { title: 'Recording Secretary', name: 'Donna Steck' },
   { title: 'Corresponding Secretary', name: 'Jane Klotz' },
