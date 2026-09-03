@@ -203,27 +203,41 @@ export default function About() {
             <h2 className="font-serif text-3xl font-bold text-white mb-8">
               Our Affiliations
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {[
                 {
                   name: 'Garden Club Federation of Pennsylvania',
                   desc: 'Federated with District XI since 1937, connecting us to garden clubs throughout Pennsylvania.',
+                  href: 'https://pagardenclubs.org/',
                 },
                 {
                   name: 'National Garden Clubs, Inc.',
                   desc: 'Member of the national organization, linking us to a community of over 160,000 gardeners across the country.',
+                  href: 'https://gardenclub.org/',
+                },
+                {
+                  name: 'Central Atlantic Region of State Garden Clubs',
+                  desc: 'Part of the region connecting garden clubs across Pennsylvania and neighboring Mid-Atlantic states.',
+                  href: 'https://www.car-sgc.org/',
                 },
                 {
                   name: 'Pennsylvania Horticultural Society',
                   desc: 'Affiliated with PHS, supporting their mission to use horticulture to improve lives and communities.',
+                  href: 'https://phsonline.org/',
                 },
               ].map((aff) => (
-                <div key={aff.name} className="bg-white/10 rounded-xl p-6 text-left border border-white/10">
+                <a
+                  key={aff.name}
+                  href={aff.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 hover:bg-white/15 rounded-xl p-6 text-left border border-white/10 transition-colors"
+                >
                   <h3 className="font-serif text-base font-bold text-mint mb-2">
                     {aff.name}
                   </h3>
                   <p className="text-white/70 text-sm leading-relaxed">{aff.desc}</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
