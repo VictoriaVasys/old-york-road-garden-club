@@ -15,7 +15,7 @@ export default function FlowerShowDetail() {
         <img
           src={imgs.img10}
           alt="Plant sale raffle basket"
-          className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_calc(50%+50px)]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/60 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
