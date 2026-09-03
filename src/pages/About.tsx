@@ -199,11 +199,11 @@ export default function About() {
       {/* Affiliations */}
       <section className="bg-forest py-16">
         <FadeIn>
-          <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-serif text-3xl font-bold text-white mb-8">
               Our Affiliations
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
                   name: 'Garden Club Federation of Pennsylvania',
