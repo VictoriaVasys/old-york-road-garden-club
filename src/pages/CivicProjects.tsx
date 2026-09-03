@@ -78,6 +78,30 @@ const civicSections: CivicSection[] = [
     ],
   },
   {
+    title: 'Nursery School at Christ Lutheran Church',
+    description:
+      'Club members work alongside preschool students at Christ Lutheran Church in Oreland to plant and tend a children\'s garden. The program introduces young learners to the joy of gardening, teaching them where food comes from and how to care for living plants.',
+    subsections: [
+      {
+        photos: [
+          { url: imgs.img7, alt: "Children's nursery garden at Christ Lutheran Church" },
+        ],
+      },
+    ],
+  },
+ {
+    title: 'Grace Presbyterian Urns',
+    description:
+      'The club brightens public and partner locations throughout Jenkintown and Abington.',
+    subsections: [
+      {
+        photos: [
+          { url: imgs.img8, alt: 'Grace Presbyterian winter display' },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Community Floral Design',
     description:
       'The club participates in community floral design programs and competitions, contributing arrangements and displays that bring beauty to shared spaces throughout the region. Members have earned recognition for their designs at Pennsylvania Horticultural Society shows and other local events.',
@@ -102,19 +126,7 @@ const civicSections: CivicSection[] = [
     subsections: [],
   },
   {
-    title: 'Nursery School at Christ Lutheran Church',
-    description:
-      'Club members work alongside preschool students at Christ Lutheran Church in Oreland to plant and tend a children\'s garden. The program introduces young learners to the joy of gardening, teaching them where food comes from and how to care for living plants.',
-    subsections: [
-      {
-        photos: [
-          { url: imgs.img7, alt: "Children's nursery garden at Christ Lutheran Church" },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Penny Pines',
+    title: 'Plant-A-Tree',
     description:
       'Through the national Penny Pines program, the club raises funds to purchase seedlings for reforestation of America\'s national forests — a small but lasting investment that helps restore natural habitats, one tree at a time.',
     subsections: [],
@@ -128,19 +140,6 @@ const civicSections: CivicSection[] = [
         label: 'Abington Library Plant Sale',
         photos: [
           { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Winter 2021–2022',
-    description:
-      'During the winter season, the club brings festive cheer to community spaces through holiday decorating and seasonal plantings, brightening public and partner locations throughout Jenkintown and Abington.',
-    subsections: [
-      {
-        photos: [
-          { url: imgs.holidayGnomes, alt: 'Holiday gnome decorations' },
-          { url: imgs.img8, alt: 'Grace Presbyterian winter display' },
         ],
       },
     ],
