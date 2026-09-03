@@ -1,4 +1,5 @@
 import wallHouseHerbGarden from './assets/wall-house-herb-garden.jpg'
+import trainStationSpring2026 from './assets/train-station-spring-2026.jpg'
 import trainStationFall2025 from './assets/train-station-fall-2025.jpg'
 import christLutheranNurseryGarden from './assets/christ-lutheran-nursery-garden.jpg'
 import trainStationFall2025b from './assets/train-station-fall-2025-b.jpg'
@@ -13,6 +14,7 @@ import presidentsAward1 from './assets/presidents-award-1.jpg'
 import presidentsAward2 from './assets/presidents-award-2.jpg'
 import presidentsAwardSmall from './assets/presidents-award-small.jpg'
 import abingtonLibrary from './assets/abington-library.jpg'
+import abingtonLibraryB from './assets/abington-library-b.JPEG'
 import holidayGnomes from './assets/holiday-gnomes.jpg'
 import phsWindowsill from './assets/phs-windowsill.jpg'
 import wallhouseOpenhouse from './assets/wallhouse-openhouse.jpg'
@@ -44,6 +46,8 @@ export const imgs = {
 
   // Page 4
   abingtonLibrary,
+  abingtonLibraryB,
+  trainStationSpring2026,
   holidayGnomes,
 
   // Page 5

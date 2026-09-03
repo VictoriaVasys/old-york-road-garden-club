@@ -26,6 +26,12 @@ const civicSections: CivicSection[] = [
       'Club members water flower boxes and seasonal displays at the Jenkintown/Wyncote train station multiple times each week. Rain barrels are maintained on-site for sustainable irrigation. Plantings are refreshed each season — spring flowers replace winter decorations, fall arrangements follow summer blooms — keeping the station welcoming for the thousands of commuters who pass through daily.',
     subsections: [
       {
+        label: 'Spring 2026',
+        photos: [
+          { url: imgs.trainStationSpring2026, alt: 'Train station spring planting 2026', portrait: true },
+        ],
+      },
+      {
         label: 'Fall 2025',
         photos: [
           { url: imgs.img2, alt: 'Train station fall planting 2025', portrait: true },
@@ -111,7 +117,7 @@ const civicSections: CivicSection[] = [
       {
         label: 'Abington Library Flower Arrangement',
         photos: [
-          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale', portrait: true },
+          { url: imgs.abingtonLibraryB, alt: 'Abington Library plant sale', portrait: true },
         ],
       },
     ],
