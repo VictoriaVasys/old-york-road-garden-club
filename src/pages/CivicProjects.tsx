@@ -101,6 +101,19 @@ const civicSections: CivicSection[] = [
       },
     ],
   },
+ {
+    title: 'Abington Public Library',
+    description:
+      'The club a fresh flower arrangement or live plant every week at the Abington Township Public Library',
+    subsections: [
+      {
+        label: 'Abington Library Flower Arrangement',
+        photos: [
+          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale' },
+        ],
+      },
+    ],
+  },
   {
     title: 'Community Floral Design',
     description:
