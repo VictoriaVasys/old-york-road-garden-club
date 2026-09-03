@@ -4,6 +4,8 @@ import { imgs } from '../images'
 interface Photo {
   url: string
   alt: string
+  /** Set to true to display this photo in a taller, portrait-shaped frame. */
+  portrait?: boolean
 }
 
 interface Subsection {
@@ -26,15 +28,15 @@ const civicSections: CivicSection[] = [
       {
         label: 'Fall 2025',
         photos: [
-          { url: imgs.img2, alt: 'Train station fall planting 2025' },
-          { url: imgs.img3, alt: 'Train station fall display 2025' },
+          { url: imgs.img2, alt: 'Train station fall planting 2025', portrait: true },
+          { url: imgs.img3, alt: 'Train station fall display 2025', portrait: true },
         ],
       },
       {
         label: 'Fall 2024',
         photos: [
-          { url: imgs.img4, alt: 'Train station fall planting 2024' },
-          { url: imgs.img5, alt: 'Train station fall display 2024' },
+          { url: imgs.img4, alt: 'Train station fall planting 2024', portrait: true },
+          { url: imgs.img5, alt: 'Train station fall display 2024', portrait: true },
         ],
       },
       {
@@ -53,8 +55,8 @@ const civicSections: CivicSection[] = [
       {
         label: '2026 — Annual Plant Sale',
         photos: [
-          { url: imgs.img10, alt: 'Plant sale raffle basket' },
-          { url: imgs.img11, alt: 'Wall House plant sale — moss purses' },
+          { url: imgs.img10, alt: 'Plant sale raffle basket', portrait: true },
+          { url: imgs.img11, alt: 'Wall House plant sale — moss purses', portrait: true },
         ],
       },
       {
@@ -72,7 +74,7 @@ const civicSections: CivicSection[] = [
       {
         label: '2018',
         photos: [
-          { url: imgs.wallhouse2018, alt: 'Wall House holiday tour 2018' },
+          { url: imgs.wallhouse2018, alt: 'Wall House holiday tour 2018', portrait: true },
         ],
       },
     ],
@@ -96,7 +98,7 @@ const civicSections: CivicSection[] = [
     subsections: [
       {
         photos: [
-          { url: imgs.img8, alt: 'Grace Presbyterian winter display' },
+          { url: imgs.img8, alt: 'Grace Presbyterian winter display', portrait: true },
         ],
       },
     ],
@@ -109,7 +111,7 @@ const civicSections: CivicSection[] = [
       {
         label: 'Abington Library Flower Arrangement',
         photos: [
-          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale' },
+          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale', portrait: true },
         ],
       },
     ],
@@ -121,7 +123,7 @@ const civicSections: CivicSection[] = [
     subsections: [
       {
         photos: [
-          { url: imgs.phsWindowsill, alt: 'PHS windowsill floral display' },
+          { url: imgs.phsWindowsill, alt: 'PHS windowsill floral display', portrait: true },
         ],
       },
     ],
@@ -152,7 +154,7 @@ const civicSections: CivicSection[] = [
       {
         label: 'Abington Library Plant Sale',
         photos: [
-          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale' },
+          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale', portrait: true },
         ],
       },
     ],
@@ -237,19 +239,15 @@ export default function CivicProjects() {
                         {sub.label}
                       </h3>
                     )}
-                    <div
-                      className={`grid gap-4 ${
-                        sub.photos.length === 1
-                          ? 'grid-cols-1 max-w-sm'
-                          : 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3'
-                      }`}
-                    >
+                    <div className="flex flex-wrap gap-4">
                       {sub.photos.map((photo) => (
                         <div key={photo.url} className="overflow-hidden rounded-xl shadow-sm">
                           <img
                             src={photo.url}
                             alt={photo.alt}
-                            className="w-full h-56 object-cover hover:scale-105 transition-transform duration-500"
+                            className={`object-cover hover:scale-105 transition-transform duration-500 ${
+                              photo.portrait ? 'w-64 aspect-[3/4]' : 'w-72 h-56'
+                            }`}
                             loading="lazy"
                           />
                         </div>
