@@ -101,6 +101,9 @@ export default function Footer() {
               Contact & Updates
             </h4>
             <address className="not-italic text-white/70 text-sm space-y-2 mb-6">
+              <p>Old York Road Garden Club</p>
+              <p>P.O. Box 214</p>
+              <p>Jenkintown, PA 19046</p>
               <p className="mt-3">
                 <a
                   href="mailto:oldyorkroadgardenclub@gmail.com"

@@ -4,7 +4,7 @@ import { imgs } from '../images'
 const benefits = [
   'Monthly copy of "The Tattler," the club newsletter',
   'Monthly programs featuring floral design demonstrations and speakers on gardening subjects',
-  'Use of our library of more than 100 books on gardening and flower arranging (cataloged on LibraryThing)',
+  'Use of our library of more than 100 books on gardening and flower arranging',
   'Participation in civic beautification projects throughout Jenkintown and Abington',
   'Invitation to the annual Spring Luncheon (ticketed, catered, with raffle)',
   'Invitation to the December Holiday Party (ticketed, catered, with raffle)',
@@ -86,7 +86,7 @@ export default function Join() {
                     to you with everything you need to know.
                   </p>
                   <a
-                    href="mailto:oldyorkroadgc@gmail.com"
+                    href="mailto:oldyorkroadgardenclub@gmail.com"
                     className="inline-block mt-4 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
                   >
                     Email Us to Join
@@ -181,10 +181,10 @@ export default function Join() {
               Send us an email to inquire about membership — we'd love to have you.
             </p>
             <a
-              href="mailto:oldyorkroadgc@gmail.com"
+              href="mailto:oldyorkroadgardenclub@gmail.com"
               className="inline-block px-10 py-4 bg-gold hover:bg-gold/90 text-white font-bold rounded-md text-lg transition-colors shadow-lg"
             >
-              oldyorkroadgc@gmail.com
+              oldyorkroadgardenclub@gmail.com
             </a>
           </div>
         </FadeIn>

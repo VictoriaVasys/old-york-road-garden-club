@@ -182,8 +182,7 @@ export default function About() {
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-5">
                   The club maintains a lending library of books on gardening and floral
-                  arrangement, available to members. The full catalog is listed on
-                  LibraryThing for easy browsing.
+                  arrangement, available to members.        
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   Members are encouraged to contribute recommendations and to take

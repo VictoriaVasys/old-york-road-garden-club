@@ -56,10 +56,6 @@ export default function Contact() {
                       </a>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Mailing Address</p>
-                      <p>Old York Road Garden Club<br />P.O. Box 214<br />Jenkintown, PA 19046</p>
-                    </div>
-                    <div>
                       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Monthly Meetings</p>
                       <p>2nd Thursday of each month<br />11:30 AM ET</p>
                     </div>

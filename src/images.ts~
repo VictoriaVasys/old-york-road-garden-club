@@ -41,7 +41,6 @@ import wallhouse2608c from './assets/wallhouse-2608c.jpg'
 import trainstation2609 from './assets/train-station-2609.jpg'
 import bluestarceremony from './assets/bluestar-ceremony.jpg'
 import bluestar from './assets/bluestar.jpg'
-import librarysale from './assets/LibrarySale.jpg'
 
 export const imgs = {
   // Page 1 — most recent posts
@@ -79,7 +78,6 @@ export const imgs = {
   holidayGnomes,
   bluestarceremony,
   bluestar,
-  librarysale,
 
   // Page 5
   phsWindowsill,

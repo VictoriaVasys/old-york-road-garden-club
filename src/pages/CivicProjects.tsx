@@ -26,9 +26,10 @@ const civicSections: CivicSection[] = [
       'Club members water flower boxes and seasonal displays at the Jenkintown/Wyncote train station multiple times each week. Rain barrels are maintained on-site for sustainable irrigation. Plantings are refreshed each season — spring flowers replace winter decorations, fall arrangements follow summer blooms — keeping the station welcoming for the thousands of commuters who pass through daily.',
     subsections: [
       {
-        label: 'Spring 2026',
+        label: '2026',
         photos: [
-          { url: imgs.trainStationSpring2026, alt: 'Train station spring planting 2026', portrait: true },
+          { url: imgs.trainStationSpring2026, alt: 'Train station new planters!', portrait: true },
+          { url: imgs.img21, alt: 'Train station summer 2026', portrait: true },
         ],
       },
       {
@@ -39,7 +40,7 @@ const civicSections: CivicSection[] = [
         ],
       },
       {
-        label: 'Fall 2024',
+        label: 'Spring 2024',
         photos: [
           { url: imgs.img4, alt: 'Train station fall planting 2024', portrait: true },
           { url: imgs.img5, alt: 'Train station fall display 2024', portrait: true },
@@ -59,7 +60,26 @@ const civicSections: CivicSection[] = [
       'Members actively cultivate and maintain the herb garden at the historic Richard Wall House in Elkins Park. The garden is replanted and refreshed each season — herbs are added, beds are mulched, and the space is continually developed. It serves as both a working garden and a living educational resource, and is a key venue for the club\'s annual herb and plant sale.',
     subsections: [
       {
-        label: '2026 — Annual Plant Sale',
+        label: '2026',
+        photos: [
+          { url: imgs.img22, alt: 'Wall House rock garden' },
+          { url: imgs.img20, alt: 'Wall House Herb Garden summer 2026' },
+          { url: imgs.img23, alt: 'Wall House Herb Garden', portrait: true },
+          { url: imgs.img24, alt: 'Wall House Herb Garden', portrait: true },
+        ],
+      },
+      
+      
+      {
+        label: '2025',
+        photos: [
+          { url: imgs.img16, alt: 'Wall House raised bed rebuild' },
+          { url: imgs.img19, alt: 'Wall House after rebuild' },
+        ],
+      },
+      
+      {
+        label: '2024 — Annual Plant Sale',
         photos: [
           { url: imgs.img10, alt: 'Plant sale raffle basket', portrait: true },
           { url: imgs.img11, alt: 'Wall House plant sale — moss purses', portrait: true },
@@ -117,7 +137,12 @@ const civicSections: CivicSection[] = [
       {
         label: 'Abington Library Flower Arrangement',
         photos: [
-          { url: imgs.abingtonLibraryB, alt: 'Abington Library plant sale', portrait: true },
+          { url: imgs.abingtonLibrary, alt: 'Abington Library arrangement', portrait: true },
+          { url: imgs.abingtonLibraryB, alt: 'Abington Library arrangement', portrait: true },
+          { url: imgs.abingtonLibraryC, alt: 'Abington Library arrangement', portrait: true },
+          { url: imgs.abingtonLibraryD, alt: 'Abington Library arrangement', portrait: true },
+          { url: imgs.abingtonLibraryE, alt: 'Abington Library arrangement', portrait: true },
+          { url: imgs.abingtonLibraryF, alt: 'Abington Library arrangement', portrait: true },
         ],
       },
     ],
@@ -138,7 +163,15 @@ const civicSections: CivicSection[] = [
     title: 'Blue Star Marker',
     description:
       'The Old York Road Garden Club maintains a Blue Star Memorial Marker, honoring the men and women of the United States armed forces who have served and sacrificed for our country. The marker is planted and tended by club members as an ongoing act of remembrance.',
-    subsections: [],
+    subsections: [
+      {
+        photos: [
+          { url: imgs.bluestarceremony, alt: 'Bluestar Marker Ceremony' },
+          { url: imgs.bluestar, alt: 'Bluestar Marker ', portrait: true },
+        ],
+      },
+ 
+],
   },
   {
     title: 'Memorial Planting',
@@ -149,7 +182,7 @@ const civicSections: CivicSection[] = [
   {
     title: 'Plant-A-Tree',
     description:
-      'Through the national Penny Pines program, the club raises funds to purchase seedlings for reforestation of America\'s national forests — a small but lasting investment that helps restore natural habitats, one tree at a time.',
+      'Through the national Plant-A-Tree program (formerly Penny Pines program), the club raises funds to purchase seedlings for reforestation of America\'s national forests — a small but lasting investment that helps restore natural habitats, one tree at a time.',
     subsections: [],
   },
   {
@@ -160,7 +193,7 @@ const civicSections: CivicSection[] = [
       {
         label: 'Abington Library Plant Sale',
         photos: [
-          { url: imgs.abingtonLibrary, alt: 'Abington Library plant sale', portrait: true },
+          { url: imgs.librarysale, alt: 'Abington Library plant sale' },
         ],
       },
     ],
