@@ -67,6 +67,7 @@ export const imgs = {
   img22: wallhouserockgarden,  // Wall House (Spring 2026)
   img23: wallhouse2608a,  // Wall House (Summer 2026)
   img24: wallhouse2608b,  // Wall House (Summer 2026)
+  img25: wallhouse2608c,  // Wall House (Summer 2026)
 
   // Page 4
   abingtonLibrary,
