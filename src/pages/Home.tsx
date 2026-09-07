@@ -81,7 +81,7 @@ export default function Home() {
                 <em className="not-italic text-mint">Building Community</em>
               </h1>
               <p className="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10">
-                For over seven decades, we've united passionate gardeners to enrich
+                For over nine decades, we've united passionate gardeners to enrich
                 our neighborhoods through horticultural excellence, civic
                 beautification, and lifelong friendship.
               </p>
