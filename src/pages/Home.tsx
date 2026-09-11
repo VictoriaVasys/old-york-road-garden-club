@@ -6,6 +6,7 @@ import {
   upcomingEvents2026_2027,
   getNextUpcomingEvent,
   parseEventDate,
+  DEFAULT_EVENT_TIME,
   type UpcomingEvent,
 } from '../data/upcomingEvents'
 
@@ -154,7 +155,7 @@ export default function Home() {
                     </h3>
                     <div className="flex flex-wrap gap-5 text-sm text-gray-500 mb-4">
                       <span className="flex items-center gap-1.5">
-                        <ClockIcon /> {nextEvent.time ?? '11:30 AM ET'}
+                        <ClockIcon /> {nextEvent.time ?? DEFAULT_EVENT_TIME}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <LocationIcon />

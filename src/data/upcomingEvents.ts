@@ -90,21 +90,51 @@ export const upcomingEvents2026_2027: UpcomingEvent[] = [
   },
 ]
 
+export const DEFAULT_EVENT_TIME = '11:30 AM ET'
+
+/** How long after an event's start time it stays featured before rolling over to the next one. */
+const FEATURED_EVENT_GRACE_HOURS = 2
+
 export function parseEventDate(dateStr: string): Date {
   return new Date(dateStr)
 }
 
-/** Returns the soonest event that hasn't happened yet, or undefined if none remain. */
+/**
+ * Extracts the first time of day mentioned in a string like "11:30 AM ET" or
+ * "1:00 – 6:00 PM" (borrowing the AM/PM from a later match when the first
+ * number in a range doesn't carry its own, e.g. the "1:00" above).
+ */
+function parseTimeOfDay(timeStr: string): { hours: number; minutes: number } | null {
+  const matches = [...timeStr.matchAll(/(\d{1,2}):(\d{2})\s*(AM|PM)?/gi)]
+  if (matches.length === 0) return null
+
+  const meridiem = matches.find((m) => m[3])?.[3]?.toUpperCase()
+  const [, hourStr, minuteStr] = matches[0]
+  let hours = parseInt(hourStr, 10)
+  const minutes = parseInt(minuteStr, 10)
+  if (meridiem === 'PM' && hours !== 12) hours += 12
+  if (meridiem === 'AM' && hours === 12) hours = 0
+
+  return { hours, minutes }
+}
+
+/** The moment an event stops being "featured" — its start time plus a grace period. */
+function getFeaturedCutoff(event: UpcomingEvent): Date {
+  const cutoff = parseEventDate(event.date)
+  const startTime = parseTimeOfDay(event.time ?? DEFAULT_EVENT_TIME)
+  if (startTime) {
+    cutoff.setHours(startTime.hours, startTime.minutes, 0, 0)
+  }
+  cutoff.setHours(cutoff.getHours() + FEATURED_EVENT_GRACE_HOURS)
+  return cutoff
+}
+
+/** Returns the soonest event that hasn't ended (plus a grace period) yet, or undefined if none remain. */
 export function getNextUpcomingEvent(
   events: UpcomingEvent[],
   referenceDate: Date = new Date(),
 ): UpcomingEvent | undefined {
-  const today = new Date(
-    referenceDate.getFullYear(),
-    referenceDate.getMonth(),
-    referenceDate.getDate(),
-  )
   return events
-    .filter((e) => parseEventDate(e.date) >= today)
+    .filter((e) => getFeaturedCutoff(e) > referenceDate)
     .sort((a, b) => parseEventDate(a.date).getTime() - parseEventDate(b.date).getTime())[0]
 }
