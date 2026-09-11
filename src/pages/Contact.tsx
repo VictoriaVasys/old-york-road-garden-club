@@ -49,10 +49,10 @@ export default function Contact() {
                     <div>
                       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Email</p>
                       <a
-                        href="mailto:oldyorkroadgardenclub@gmail.com"
+                        href="mailto:oldyorkroadgc@gmail.com"
                         className="text-sage hover:text-forest transition-colors"
                       >
-                        oldyorkroadgardenclub@gmail.com
+                        oldyorkroadgc@gmail.com
                       </a>
                     </div>
                     <div>

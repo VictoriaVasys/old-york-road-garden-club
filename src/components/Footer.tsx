@@ -91,10 +91,10 @@ export default function Footer() {
             <address className="not-italic text-white/70 text-sm space-y-2 mb-6">
               <p className="mt-3">
                 <a
-                  href="mailto:oldyorkroadgardenclub@gmail.com"
+                  href="mailto:oldyorkroadgc@gmail.com"
                   className="hover:text-mint transition-colors"
                 >
-                  oldyorkroadgardenclub@gmail.com
+                  oldyorkroadgc@gmail.com
                 </a>
               </p>
               <p>Meetings: 2nd Thursday, 11:30 AM ET</p>

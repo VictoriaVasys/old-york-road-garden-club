@@ -85,7 +85,7 @@ export default function Join() {
                     to you with everything you need to know.
                   </p>
                   <a
-                    href="mailto:oldyorkroadgardenclub@gmail.com"
+                    href="mailto:oldyorkroadgc@gmail.com"
                     className="inline-block mt-4 px-6 py-2.5 bg-gold hover:bg-gold/90 text-white font-semibold rounded-md transition-colors text-sm"
                   >
                     Email Us to Join
@@ -180,10 +180,10 @@ export default function Join() {
               Send us an email to inquire about membership — we'd love to have you.
             </p>
             <a
-              href="mailto:oldyorkroadgardenclub@gmail.com"
+              href="mailto:oldyorkroadgc@gmail.com"
               className="inline-block px-10 py-4 bg-gold hover:bg-gold/90 text-white font-bold rounded-md text-lg transition-colors shadow-lg"
             >
-              oldyorkroadgardenclub@gmail.com
+              oldyorkroadgc@gmail.com
             </a>
           </div>
         </FadeIn>
