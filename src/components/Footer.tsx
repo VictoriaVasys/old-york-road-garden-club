@@ -1,19 +1,7 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import oyrgcTreeWhite from '../assets/oyrgc-tree-white.png'
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail('')
-    }
-  }
-
   return (
     <footer className="bg-forest text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
@@ -95,10 +83,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact + Newsletter */}
+          {/* Contact */}
           <div>
             <h4 className="font-serif text-lg font-medium text-mint mb-5">
-              Contact & Updates
+              Contact
             </h4>
             <address className="not-italic text-white/70 text-sm space-y-2 mb-6">
               <p className="mt-3">
@@ -114,34 +102,6 @@ export default function Footer() {
                 Grace Presbyterian Church, 444 Old York Rd, Jenkintown
               </p>
             </address>
-
-            <div>
-              <p className="text-white/80 text-sm font-medium mb-3">
-                Newsletter Sign-Up
-              </p>
-              {subscribed ? (
-                <p className="text-mint text-sm">
-                  Thank you for subscribing! You'll receive our next newsletter.
-                </p>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your email address"
-                    required
-                    className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-white/40 text-sm focus:outline-none focus:border-mint focus:bg-white/15 transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-gold hover:bg-gold/90 text-white text-sm font-semibold rounded-md transition-colors whitespace-nowrap"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              )}
-            </div>
           </div>
         </div>
 

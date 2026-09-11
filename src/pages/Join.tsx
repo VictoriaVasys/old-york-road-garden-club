@@ -4,7 +4,6 @@ import { imgs } from '../images'
 const benefits = [
   'Monthly copy of "The Tattler," the club newsletter',
   'Monthly programs featuring floral design demonstrations and speakers on gardening subjects',
-  'Use of our library of more than 100 books on gardening and flower arranging',
   'Participation in civic beautification projects throughout Jenkintown and Abington',
   'Invitation to the annual Spring Luncheon (ticketed, catered, with raffle)',
   'Invitation to the December Holiday Party (ticketed, catered, with raffle)',
@@ -73,7 +72,7 @@ export default function Join() {
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-8">
                   Annual dues are $45 and cover a full year of membership, including all
-                  programs, the newsletter, library access, and civic project participation.
+                  programs, the newsletter, and civic project participation.
                   Meetings are free and open to the public — attending a meeting is a great
                   way to get a feel for the club before joining.
                 </p>
