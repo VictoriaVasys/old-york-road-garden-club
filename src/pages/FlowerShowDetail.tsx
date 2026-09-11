@@ -86,6 +86,19 @@ export default function FlowerShowDetail() {
                     <li key={c.title}>
                       <span className="font-semibold text-forest uppercase">{c.title}</span> —{' '}
                       {c.description}
+                      {c.examplesUrl && (
+                        <>
+                          {' '}
+                          <a
+                            href={c.examplesUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sage hover:text-forest font-semibold underline underline-offset-2"
+                          >
+                            See design examples
+                          </a>
+                        </>
+                      )}
                     </li>
                   ))}
                 </ul>

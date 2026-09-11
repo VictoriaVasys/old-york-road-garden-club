@@ -6,6 +6,8 @@ export interface FlowerShowHorticultureClass {
 export interface FlowerShowDesignClass {
   title: string
   description: string
+  /** Link to reference images/examples for this design style (e.g. an NGC Pinterest board). */
+  examplesUrl?: string
 }
 
 export interface FlowerShowDetails {
@@ -46,6 +48,7 @@ export const flowerShows: Record<string, FlowerShowDetails> = {
       {
         title: 'End of Summer',
         description: 'Traditional Line Mass Design using common garden flowers.',
+        examplesUrl: 'https://www.pinterest.com/nonybizness/ngc-traditional-line-or-lines-mass/',
       },
       {
         title: 'Back to School',
@@ -95,6 +98,7 @@ export const flowerShows: Record<string, FlowerShowDetails> = {
       {
         title: "Spooky Spider's Dance",
         description: "Multi-Rhythmic Design, designer's choice of plant material.",
+        examplesUrl: 'https://www.pinterest.com/beepurr/multi-rhythmic-floral-design/',
       },
     ],
     horticultureTip:
